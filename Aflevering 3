@@ -508,19 +508,97 @@
           ))))
 
 ;; =========== ### EXERCISE 10 ### ============
-;; Proper-list-ref:
+;;(EDIT 7. maj 2016)
+;; Udvid list-ref, list-head og list-tail således at de returnerer en beskrivende fejlmeddelse ved forkerte argumenter.
 
 (define proper-list-ref
   (lambda (l k)
-    (if (not (integer? k))
-        (if (< k 0)
-            (if (> k (length l))
-                (if (not (list? l))
-                    (errorf 'proper-list-ref "~s is not a proper list")
-                    (list-ref l k))
-                (errorf 'proper-list-ref "Index ~s is ouot of range for the list ~s 
-    
-    
+    (if (integer? k) ;;Tjekker om k er et heltal
+        (if (not (< k 0)) ;;Tjekker om k > 0
+            (if (not (> k (length l))) ;;Tjekker om størrelsen af k er inden for længden af listen l
+                (if (list? l) ;;Tjekker om l er en liste
+                    (list-ref l k)
+                    (errorf 'proper-list-ref "~s is not a proper list" l))
+                (errorf 'proper-list-ref "index ~s is out of range for the list ~s" k l))
+            (errorf 'proper-list-ref "index ~s is not non-negative" k))
+        (errorf 'proper-list-ref "index ~s is not an integer" k))))
+
+(define test-proper-list-ref
+  (lambda (candidate)
+    (and (equal? (candidate '(0 1 2 3 4 5) 0)
+                 0)
+         (equal? (candidate '(0 1 2 3 4 5) 3)
+                 3)
+         (equal? (candidate '(0 1 2 3 4 5) 5)
+                 5)
+         ;;;
+         )))
+
+;; > (test-proper-list-ref proper-list-ref)
+;; #t
+
+
+
+(define proper-list-head
+  (lambda (l k)
+    (if (integer? k) ;;Tjekker om k er et heltal
+        (if (not (< k 0)) ;;Tjekker om k > 0
+            (if (not (> k (length l))) ;;Tjekker om størrelsen af k er inden for længden af listen l
+                (if (list? l) ;;Tjekker om l er en liste
+                    (list-head l k)
+                    (errorf 'proper-list-ref "~s is not a proper list" l))
+                (errorf 'proper-list-ref "index ~s is out of range for the list ~s" k l))
+            (errorf 'proper-list-ref "index ~s is not non-negative" k))
+        (errorf 'proper-list-ref "index ~s is not an integer" k))))
+
+(define test-proper-list-head
+  (lambda (candidate)
+    (and (equal? (candidate '(0 1 2 3 4 5) 0)
+                 '())
+         (equal? (candidate '(0 1 2 3 4 5) 3)
+                 '(0 1 2))
+         (equal? (candidate '(0 1 2 3 4 5) 5)
+                 '(0 1 2 3 4))
+         (equal? (candidate '(0 1 2 3 4 5) 6)
+                 '(0 1 2 3 4 5))
+         ;;;
+         )))
+
+;; > (test-proper-list-head proper-list-head)
+;; #t
+
+
+
+(define proper-list-tail
+  (lambda (l k)
+    (if (integer? k) ;;Tjekker om k er et heltal
+        (if (not (< k 0)) ;;Tjekker om k > 0
+            (if (not (> k (length l))) ;;Tjekker om størrelsen af k er inden for længden af listen l
+                (if (list? l) ;;Tjekker om l er en liste
+                    (list-tail l k)
+                    (errorf 'proper-list-ref "~s is not a proper list" l))
+                (errorf 'proper-list-ref "index ~s is out of range for the list ~s" k l))
+            (errorf 'proper-list-ref "index ~s is not non-negative" k))
+        (errorf 'proper-list-ref "index ~s is not an integer" k))))
+
+(define test-proper-list-tail
+  (lambda (candidate)
+    (and (equal? (candidate '(0 1 2 3 4 5) 0)
+                 '(0 1 2 3 4 5))
+         (equal? (candidate '(0 1 2 3 4 5) 3)
+                 '(3 4 5))
+         (equal? (candidate '(0 1 2 3 4 5) 5)
+                 '(5))
+         (equal? (candidate '(0 1 2 3 4 5) 6)
+                 '())
+         ;;;
+         )))
+
+;; > (test-proper-list-tail proper-list-tail)
+;; #t
+
+
+
 
 ;; =========== ### EXERCISE 14 ### ============
 ;;(EDIT 7. maj 2016)
