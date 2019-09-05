@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+        key = getParameterByName('key');
+        thngId = getParameterByName('thngId');
+        projectId = getParameterByName('projectId');
+    </script>
+
+    <title>Pi Controller</title>
+    <style class="anchorjs"></style><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+
+<body>
+
+<div class="container bs-docs-container">
+    <div class="row">
+        <div class="col-md-9" id="the-list" role="main">
+            <div class="bs-docs-section">
+                <h2>Actuators</h2>
+                <hr>
+                <h3>Actions</h3>
+                    <button id="toggle-led1"/>Toggle LED 1</button>
+                    <button id="toggle-led2"/>Toggle LED 2</button>
+                    <button id="toggle-led3"/>Toggle LED 3</button>
+                    <script>
+                        $(function() {
+                            $('#toggle-led1').click(function() {
+                                sendAction("_led1");
+                            });
+                            $('#toggle-led2').click(function() {
+                                sendAction("_led2");
+                            });
+                            $('#toggle-led3').click(function() {
+                                sendAction("_led3");
+                            });
+                        });
+                    </script>
+                </div>
+
+                <hr>
+
+                <h3>Sensors</h3>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span id="value-led1" class="badge">0.0</span>
+                        led1
+                    </li>
+                    <li class="list-group-item">
+                        <span id="value-led2" class="badge">0.0</span>
+                        led2
+                    </li>
+                    <li class="list-group-item">
+                        <span id="value-led3" class="badge">0.0</span>
+                        led3
+                    </li>
+                    <li class="list-group-item">
+                        <span id="value-temperature" class="badge">0.0</span>
+                        temperature
+                    </li>
+                    <li class="list-group-item">
+                        <span id="value-humidity" class="badge">0.0</span>
+                        humidity
+                    </li>
+                    <li class="list-group-item">
+                        <span id="value-pir" class="badge">0.0</span>
+                        pir
+                    </li>
+                </ul>
+                <script>
+                    var url = 'wss://ws.evrythng.com:443/thngs/'+thngId+'/properties?access_token='+key;
+                    var socket = new WebSocket(url);
+                    socket.onmessage = function (message) {
+                        var content = JSON.parse(message.data);
+                        console.log('Property update : ', content[0]);
+
+                        let newValue = content[0].value;
+                        if (!newValue) {
+                            newValue = "false";
+                        }
+
+                        $('#value-'+content[0].key).html(newValue);
+                    };
+                    socket.onerror = function (error) {
+                        console.log('An error occurred while trying to connect to a WebSocket!');
+                        console.log(error);
+                    };
+                </script>
+                <script>
+                    function sendAction(type){
+                        $.ajax({
+                            url: 'https://api.evrythng.com/actions/' + type + '?project=' + projectId,
+                            dataType: 'json',
+                            type: 'post',
+                            contentType: 'application/json', //#B
+                            data: JSON.stringify({"type": type, "thng": thngId}),
+                            beforeSend: function (data) {
+                                data.setRequestHeader("authorization", "jMHzhm7aVqN5dfPhucus1GF4WfE15cNG2njNiRMnI8niFixxuewJKtbODy3v4ZMTB4FLLz26wHB6hF1y")
+                            },
+                            processData: false,
+                            success: function( data, textStatus, jQxhr ){ //#D
+                                $('#response pre').html( JSON.stringify( data ) );
+                            },
+                            error: function( jqXhr, textStatus, errorThrown ){//#E
+                                console.log( errorThrown );
+                            }
+                        });
+                    }
+                </script>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

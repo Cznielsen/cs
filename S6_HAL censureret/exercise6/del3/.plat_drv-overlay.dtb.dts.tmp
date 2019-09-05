@@ -1,0 +1,26 @@
+# 1 "/home/stud/hal/i3hal_f2018_weeabros/exercise6/del3/plat_drv-overlay.dts"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 1 "/home/stud/hal/i3hal_f2018_weeabros/exercise6/del3/plat_drv-overlay.dts"
+
+
+/dts-v1/;
+/plugin/;
+
+/ {
+  compatible = "brcm,bcm2835", "brcm,bcm2836", "brcm,bcm2708", "brcm,bcm2709";
+
+  fragment@0 {
+
+    target-path = "/";
+    __overlay__ {
+
+      plat_drv: plat_drv@0 {
+
+        compatible = "ase, plat_drv";
+ gpios = <&gpio 20 1>, <&gpio 21 1>, <&gpio 26 1>;
+        status = "okay";
+      };
+    };
+  };
+};

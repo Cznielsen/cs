@@ -1,0 +1,47 @@
+dOpt Disposition 1 noter
+
+- Hvad er et lineært program / den lineære model?
+	- Standard form? (Maksimere, nonnegative værdier, kun <= (mindre lig med) constraints)
+	- Et lineært program kan konverteres til standard form ved at fordoble antallet af constraints og variabler
+
+- Dictionary (m+n+1 variabler , slack variables, basic & non-basic variabler)
+	- Basic solution (sætte alle non-basic variabler til 0).
+	- Pivot (forbedre løsningen). Først dias slide 45
+	- Infeasible: Hvis ingen løsning der tilfredsstiller constraints.
+	- Unbounded: Hvis arbitrær god løsning (dvs. en nonbasic variabel kun har positive koefficienter i alle rækker)
+	- Degenerate: Hvis nogle af koefficienterne i konstant-søjlen er nul / tomme, hvilket KAN medføre cykler.
+		- Man kan undgå cykler ved at vælge entering/exiting variabler med lexicografisk metode eller Bland's rule.
+
+- Simplex (En algoritme til at løse lineære programmer ved at bevæge sig rundt i hjørnerne af løsningsrummet)
+	- One phase Simplex: dias 1 slide 47+48
+	- Two phase Simplex: dias 2 slide 41
+
+- Auxiliary problem:
+	Kan bruges på all dictionaries til at tjekke om det originale lineære program er feasible eller til at konvertere løsningen til et feasible directory. Hvis x_0 = 0, så feasible.
+
+- Fundemental Theorem of LP (beviset er bare at køre 2-phase simplex):
+	1. Hvis der ikke er en optimal løsning, så er problemet infeasible eller unbounded.
+	2. Hvis der er en feasible solution, så findes der en basic solution.
+	3. Hvis der eksisterer en optimal solution, så findes der også en optimal basic solution.
+
+- Compleksitetsanalyse:
+	- Pivot er den mest tidskrævende operation, så det er den vi analyserer.
+	- Worst case: O(binomial(m+n, m)) = O((n+m)!/n!m!), hvilket er en meget dårlig og eksponentiel tid.
+		- Ikke brugbar i virkligheden (meget sjælden)
+	- "Normal case": mere end m*log_2*n iterationer sjældne.
+
+- Implementation af simplex:
+	- Fractions kan blive rigtigt langsomme fordi tal bliver store (og man derfor skal regne efter største fællesnævner)
+		- Man kan bruge integer pivoting i stedet, hvor man omdanner tallene så man kun regner med integers.
+	- Floating points er meget hurtige at bruge, men taber præcision når de bliver afrundet.
+		- Lille fix: Antag af tal i rækkevidden (-e, e) er 0.
+	- Antallet er brugbare variabler er lille i virkeligheden (opdaget via utallige forsøg).
+
+- Matrix notation:
+	- Kan bruges til at behjælpe implementationen (perspektivér programmeringsprojekt)
+	- Mere. fatter hat af notationen.
+
+- Noget mere fra kombinatorisk søgning (dias 13)
+
+
+

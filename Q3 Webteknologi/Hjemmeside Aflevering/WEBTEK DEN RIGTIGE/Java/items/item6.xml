@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w:item xmlns="http://www.w3.org/2001/XMLSchema" xmlns:w="http://www.cs.au.dk/dWebTek/2014" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:shemaLocation="http://www.cs.au.dk/dWebTek/2014 schema.xsd">
+	<w:itemID>0006</w:itemID>
+	<w:itemName>Ebin Pepe</w:itemName>
+	<w:itemURL>http://czn.dk/products.html</w:itemURL>
+	<w:itemPrice>14</w:itemPrice>
+	<w:itemStock>2</w:itemStock>
+	<w:itemDescription>This combination of memes is very exiting for us (and hopyfully for you as well).</w:itemDescription>
+</w:item>

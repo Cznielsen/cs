@@ -1,0 +1,14 @@
+body{
+	background-color: white;
+	font-family: "Arial", sanf-serif;
+}
+
+b.center{
+	font-size: 200%;
+	color: #000080;
+}
+
+.reference{
+	color: gray;
+	font-size: 50%;
+}

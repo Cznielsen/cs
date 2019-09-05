@@ -1,0 +1,23 @@
+#+TITLE: dOpt Compulsory Assignment 3 Re-handin
+#+AUTHOR: Christian Zhuang-Qing Nielsen
+#+OPTIONS: email:t
+#+EMAIL: 201504624, christian@czn.dk
+#+LATEX_HEADER: \usepackage{bm}
+
+* Proof
+We want to prove that one of two languages are in $\bm{P}$ iff the other one is as well. These languages are decided by the same function, but the input to the deciding function is represented differently (both are still strings $x \in \{0, 1\}^*$) and the two representations are /good/ and /polynomially equivalent/.  \\ \\
+Starting off, we can assume that one of the languages, lets say $L_1$, is in $\bm{P}$:
+\begin{equation*}
+$L_1 \in \bm{P}$
+\end{equation}
+Under this assumption, the language is decided by a Turing machine $T_1$ in polynomial time. Now to continue our proof we need to show that $L_2$ is also in $\bm{P}$. From our assumption, we know that $\pi_1$ is a good representation and we want to map it to $\pi_2$. However, we cannot assume that $x \in \pi_2(S)$ just because they are polynomially equivalent.  \\ \\
+Since $\pi_2$ is also supposedly a good representation we can create a Turing machine $T_2$ that decides the language it represents in polynomial time. Being certain of a good representation AND knowing it is polynomially equivalent with $pi_1$ from the description, we can perform the mapping 
+\begin{equation*}
+$\pi_1(x) = r_1(\pi_2(x))$.
+\end{equation}
+Since every input to the mapping was a good representation (and thus decidable by a Turing machine) and it can be mapped back to $\pi_1$ used by $L_1$, which was definitely in $\bm{P}$ from our assumption, which translates back to $L_2 \in \bm{P}$  iff it is decided by a TM $T_2$ and $L_1$ is decided by a TM $T_1$. \square
+
+* Notes
+So the idea is that  if $L_1 \in \bm{P}$ we can utilise a mapping between the polynomially equivalent representations. We know that $\pi_1$ is a good representation from our assumption (and our constructed Turing machine). For the mapping to make sense, $\pi_2$ must also be a good representation, which is why we construct the second Turing machine that hopefully decides the language $L_2$. This can be used to confirm that $L_2 \in \bm{P}$ if and only if our  assumptions are true (i.e. that $\pi_2$ is a good representation and that $L_1 \in \bm{P}$). 
+
+This is how I interpreted the proof made using Turing machines.

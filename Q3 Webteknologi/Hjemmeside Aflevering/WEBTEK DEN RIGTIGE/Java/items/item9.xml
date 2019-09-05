@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w:item xmlns="http://www.w3.org/2001/XMLSchema" xmlns:w="http://www.cs.au.dk/dWebTek/2014" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:shemaLocation="http://www.cs.au.dk/dWebTek/2014 schema.xsd">
+	<w:itemID>0009</w:itemID>
+	<w:itemName>Sophisticated Pepe</w:itemName>
+	<w:itemURL>http://czn.dk/products.html</w:itemURL>
+	<w:itemPrice>15</w:itemPrice>
+	<w:itemStock>4</w:itemStock>
+	<w:itemDescription>This gentleman of a Pepe is sharing his champagne with you! He might even give you a small loan of a million dollars.</w:itemDescription>
+</w:item>

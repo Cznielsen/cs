@@ -1,0 +1,25 @@
+#+TITLE: dOpt Compulsory Assignment 4
+#+AUTHOR: Christian Zhuang-Qing Nielsen
+#+OPTIONS: email:t
+#+EMAIL: 201504624, christian@czn.dk
+#+LATEX_HEADER: \usepackage{bm}
+
+* First Part
+For this part we must show that there exists an optimal solution in the set of the corner points of the unit cube.
+
+The trick here is that we can show that the objective function is linear in all cases. The only place where it might be quadratic is the second term. Since $Q$ is defined to be $0$ on its diagonal, we can write the objective function as two sums:
+\begin{equation*}
+$\sum_i c_ix_i + \frac{1}{2}\sum_{i,j}q_{ij}x_ix_j$
+\end{equation}
+where each term in the sum where $i=j$ is $0$. This way, it cannot possibly become quadratic. \newline \newline
+If we assume we are given an optimal solution $x \in [0, 1]^n$ where there are $k$ coordinates that aren't 
+* Second Part
+\begin{equation*}
+$f(x)=-\sum_{i \in V}x_i + \sum_{(i,j) \in  E} n \cdot x_i x_j$
+\end{equation}
+For this proof we must show that $f(x) \geq 0$ when $S$ is not an independant set and that $f(x) = -|S|$ when $S$ /is/ an independant set.
+
+Our equation $f(x)$ consists of two summation terms.
+When $S$ is not independant we have to cases to work with: The first case is that the sets are empty and the resulting output is 0. The second case is when the rightmost sum of $f(x)$ must be at least $n$ as there must exists at least one connection between two vertices. Since $n$ is defined to be the size of $V$ and $S \subset V$, it must necessarily be bigger than the first term as $n+(-1) \geq 0$ always. \newline \newline
+If $S$ is an independant set, there must be no edges between the vertices in the graph, which results in every term in the sum of the second term of $f(x)$ resulting in 0 (as there are no connections in an independant set). This leaves us with the first term, which is a sum of ones and zeros, where it is only incremented when a vertex is in the subset $S$. This results in the output being the negative size of $S$, which is exactly $-|S|$.
+* Third Part

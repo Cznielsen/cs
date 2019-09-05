@@ -1,0 +1,57 @@
+PACT Analysis
+What is a PACT Analysis?
+
+    People: relevant user characteristics and skills
+    Activities: how is the activity currently carried out? Why? What can be improved?
+    Context: the environment of the activity
+    Technologies: what tools are used now, and how might new developments be used?
+
+People
+
+    Cognitive characteristics - level and duration of attention, perception, memory, learning abilities, cognitive capabilities, fears, personality characteristics
+    Physical characteristics - age differences, physical abilities,
+    What motivates, pleases and engages - affect
+    Experience & expectations - novice v's expert
+    Language
+    Culture - For example, in Microsoft Excel there are two buttons, one labeled with a cross and the other a tick. In the US a tick is used for acceptance and the cross rejection, but in Ireland a tick or a cross can be used to show acceptance (e.g. a cross on a ballot paper).
+    Special needs - blindness, colour blindness, deafness, wheel chair user
+    Homogenous vs heterogeneous user groups - website site users are (normally) heterogeneous - many different types of people; users of a company's intranet are (generally) homogenous
+    Discretionary vs committed users - does the user have a choice? if yes, then you need to encourage them to return
+    Infrequent vs frequent users - if users are normally infrequent, then interface must be particularly 'helpful' as users will forget how to complete complicated tasks.
+
+Activities
+
+    Goals, tasks and actions
+    Regular or unusual, weekly? Yearly? - frequent tasks should be easy to do; infrequent tasks should be easy to learn or remember
+    Well-defined or vague
+    Continuous or interrupted - user may need to 'find their place' again
+    Current task practices
+    Individual vs co-operative work
+    Multi-tasking vs serial tasks
+    Passive vs active,
+    Quality vs quantity trade-off
+    Data input requirements
+    Length of time on tasks - peaks and troughs of working, need for fast response
+    Coping with errors - presentation of error messages, how to deal with them, how the system accommodates them, significance of errors, safety critical errors
+
+Context
+
+    Physical environments - noisy, cold, wet, dirty, stressful, uses dangerous materials, sunny
+    Social environments - channels of communication, structure,centralisation vs decentralisation, home, mobile, training materials
+    Organisational context - relationships with customers, other staff, effect on work practices and job content, role, deskilling, job loss, shift in power
+    Circumstances under which activities happen (time, place, pressure of work/time)
+    Amount and type of support for activities - tuition, manuals, demonstrations, new knowledge, new skills
+
+Technologies
+
+    Input - Getting data in; getting commands; security
+    Output - Characteristics of different displays (e.g. video vs. photographs; speech vs. screen)
+    Communications - Between people, between devices, speed, etc. - What is connected to what?
+    Size of screen
+    GUI or not?
+    Sound?
+    Networked or stand alone.
+    Always on or dial in?
+    Real-time systems;
+    Safety critical systems;
+    Walk-up-and-use systems (e.g. kiosks) / Office systems / Palm pilot application / Web site.

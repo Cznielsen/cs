@@ -1,0 +1,125 @@
+dOpt Disposition 2 noter
+
+- Duality (TEGN GRAFEN MED PRIMAL OG DUAL):
+	- Enhvert (primal) lineært program har en tilsvarende dual, som er det negativt-transponerede program (med min i stedet for max).
+	- Weak Duality Theorem:
+		- Hvis primal problemet og dens dual har feasible solutions, så er værdien af primalløsningen mindre eller lig med dual-løsningen.
+		- Bevís: Man kan reducere fra c^T*x <= b^T*y. Se dias 3 slides 23.
+	- (Strong) Duality Theorem:
+		- Hvis en løsning er optimal for primal, og en anden løsning er optimal for dual, så har de den samme værdi.
+		- Bevis: Vis at den optimale løsning til dual er den samme som den optimale løsning til primal.
+
+	- Lemmaer:
+		1: Hvis Primal er unbounded, så kan den blive uendelig stor og derfor må dual være infeasible.
+		2: Hvis Dual er unbounded, så kan den blive uendelig lille, og derfor må primal være infeasible.
+		3: Dual af en primals dual giver den samme primal, dvs. at de to problemer er ækvivalente, og man kan derfor finde den samme løsning med de to.
+	- Man kan bruge strong duality til at tjekke at løsninger til LP programmer er optimale, dette garanteres ved at tjekke løsningens dual program og se om løsningen er ens.
+
+	- (Strict) Complementary Slackness:
+		- Man kan bruge complementary slackness til at finde en optimal løsning til et primal LP's dual, hvis man har den optimale løsning til primal. Det samme gælder hvis man har den optimale løsning til et dual program og vil finde den optimal løsning til dets tilhørende primal.
+		- Egenskaben/Krav: (mindst én skal gælde fra hver. Strict = Præcis én skal gælde fra hver)
+			- For alle i = 1,2, ..., m
+				a) sum_{j}{n} a_ij*x_j=b_i   [dvs. at den i'de primal constraint ikke har nogen slack (og værdien derfor er 0)]
+				b) y_i = 0		             [dvs. at den i'de dual-variabel har værdien 0]
+			- For alle j = 1,2, ..., n
+				a) sum_{i}{m} a_ij*y_i = c_j   [dvs. at den j'de dual constraint ikke har nogen slack (og værdier derfor er 0)]
+				b) x_j = 0					   [dvs. at den j'de primal-variable har værdien 0]
+		- Hvis x og y er feasible løsninger til primal og dual, så er de begge optimale hvis og kun hvis de begge tilfredsstiller complementary slackness.
+		- Bevis for strict complementary slackness: dias 4 slide 30-33
+
+	- Man kan i stedet for at køre simplex på primal problemet, bare køde den på dual problemet (da de giver samme resultat hvis der findes en optimal løsning).
+		- Dette er tit smart da primal problemet tit er et minimeringsproblem, og dual-problemet da vil være et maksimeringsproblem.
+		- Regler for at tage dualen: Se dias 4 slide 23.
+	- Man kan vise at et program er infeasible vha. Farkas Lemma.
+
+
+- Game Theory:
+	- Matrix Games:
+		- To spillere der vælger række og søjle. Den ene giver den anden penge hvis de gætter den samme værdi.
+		- En matrix A der beskriver hvor meget der der bliver givet ud på et givent gæt. F.eks. hvis rækkespiller og søjlespiller vælger den samme index, så skal den ene betale den forudaftalte værdi til den anden.
+
+		- Hvordan finder vi de bedste strategier for de to spillere?
+			- Ved at de begge spiller en optimaliseret tilfældig strategi, men hvor de forsøger at opnå det modsatte af hinanden (den ene prøver at få penge mens den anden prøver at bevare penge)
+				- Dette resulterer i at deres strategier er hinandens duals.
+		- Konsekvensen af ovenstående:
+			- Den enes forventede lower bound på sejrspenge svarer til den andens upper bound på forventet tab af penge.
+			- Denne fælles værdi kaldes for spillets værdi.
+
+		- von Neuman Min-Max Theorem:
+			- For enhver reel matrix A: så er;;; max_p min_q q^T*A*p = min_q max_p q^T*A*p
+				- Hvor p er sandsynlighedensdistributionen over søjlerne i A, og q er sandsynlighedsdistributionen over rækkerne i A.
+
+		- Kan man spille en optimal strategi og stadig udnytte dårlige modspillere (dvs. folk der ikke spiller en optimal strategi?).
+				*Her betyder exploit at man får en bedre forventet gevindst end spillets værdi.
+			- Lad S \subset {1,2,...,m} være mængden af rækker hvor modspilleren tildeler ikke-nul sandsynligheder.
+			- Hvis modspilleren vælger en række inden for S, så det at få en bedre forventet gevindst ikke lade sig gøre (antaget optimal strategi for begge spillere), da den optimale løsning til spillet svarer til spillets værdi (fra før med upper/lower bound), ligegyldigt hvilket spil modspilleren foretager sig. Beviset for dette er complementary slackness-teoremet.
+			- Hvis modspilleren vælger en række uden for S, så den forventede gevindst er skarpt bedre end spillets værdi. Beviset for dette er Strict Complementary Slackness Theorem.
+
+		- Nash Equilibrium: Er når man vælger den næste strategi som det optimale modsvar til modspillerens strategi.
+			- Teorem: En mængde tilfældige strategier for et matrix game er et Nash equilibrium hvis og kun hvis de begge er optimale.
+
+	- Evt. have lidt om Kuhn's three card poker
+		- Pokerspil med tre kort. Den har en deterministisk strategi i hvert tilfælde.
+
+	- Man kan bruge teorien bag matrixspil til at analysere runder man skiftevis tager handlinger (og hvor der kommer lidt ekstra information ind i spillet lidt efter lidt). Dog vil dette gøre spilmatricen ekstremt stor, hvilket kan føre til at det bliver umuligt at beregne på en computer.
+
+	- Yao's Principle
+		- Den forventede kompleksitet af den bedste tilfældige algoritme på et worst-case input er lig den vægtede gennemsnitskompleksitet for en worst-case distribution af inputs der benytter sig af den bedste deterministiske algoritme. Beviset for dette er spillet vi definerede.
+		- Kan bruges til at finde/bevise et lower bound på et svært problem ved at konstruere en "svær" inputdistribution på analysere gennemsnitskompleksiteten, hvilket nogle gange er nemmere.
+
+
+- Integer Programming
+	- Et lineært program bortset fra at variablernes værdier i en feasible løsning skal være nonnegative-integers (dvs. at de også kan være 0).
+	- Kan bruges til meget mere end normale lineære programmer, som f.eks. at beskrive boolske udtryk, præpositionslogik, set partitioning, set covering, traveling salesman problem, osv.
+
+	-Traveling Salesman Problem
+		- Givet en række byer og distancerne mellem byerne, hvad er den korteste rute der går igennem alle byer præcis én gang og vender tilbage til den originale by?
+		- Kan beskrives som et Integer Lineært Problem
+
+	- Bounded Integer Linear Program
+		- Det samme som ovenstående, men hvor decision variablerne (x'erne) er begrænset af to andre variabler l_i og u_i.
+
+	- LP Relaxation: Når man ignorerer integer-constraintet og prøver at afrunde til sidst i stedet for at opnå en feasible løsning.
+
+	- Branch-and-bound:
+		- Er en algoritme der forsøger at finde en optimal integer løsning på et problem P ved at opddele det i en række mindre problemer (branches).
+
+		1) Man tager sit ILP P med upper- og lower bounds og glemmer integer-constraintet indtil videre. Dette program P* løses til optimalitet som normalt vha. simplex.
+		2) Hvis P* er infeasible, så er P også infeasible.
+		3) Ellers, lad (x*, λ*) være den optimale løsning til P*
+		4) Hvis man er heldig og x* er integer, så returnér (x*, λ*).
+		5) Hvis λ* <= currentbest (bound), så retunér fra branch med ingen løsning, dvs. return (null, -∞)
+		6) Ellers vælg i, således at x_i* IKKE er et heltal.
+		7) Rund x_i* ned, og lav en ny constraint u_i der er lig denne værdi (upper bound). Vi rekursivt løser (branchen), som er det nye program: (P*[u_i], currentbest) og får en ny løsning (x^l, λ^l).
+		8) Hvis λ^l > currentbest, så sæt currentbest := λ^r
+		9) Ligeledes sætter vi lower bound for den i'de variabel x_i*. Vi runder x_i* op og sætter l_i lig dette, og løser rekursivt denne branch af problemet for at få den nye optimale løsning (x^r, λ^r).
+		10) Hvis λ^l > λ^r, så returnér (x^l, λ^l), ellers retunér (x^r, λ^r)
+
+		- Note: Basically så brancher man ud fra det originale program indtil du finder den bedste løsning der kun bruger integer variabler.
+
+		- Termination af algoritmen: Når u_i = l_i for alle i terminerer vi.
+		- Hvis vi ikke terminerer, vil der i hvert rekursivt kald enten forøge én l_i eller formindske én u_i.
+		- Eftersom l_i og u_i er heltal, så terminerer vi altid.
+
+		- Tidskompleksitet: antallet af blade i rekursionstræet. Eksponentiel tid (ligesom alle andre integer linear programs), men vi kan håbe at mange af subproblemerne afslutter tidligt.
+
+		- Non-depth first Branch and Bound (variation):
+			- Har en specifik datastruktur i stedet for et rekursionstræ, hvilket gør det muligt at tjekke de bedste problemer først (altså dem der har de mest relaxed løsningsværdier). Dette gør det muligt at forøge curretbest virkelig meget på kort tid.
+
+		- Pseudokode for Branch and Bound: Findes på dias 8 slide 8
+
+	- Valid Inequality (Gyldig ulighed): En ny ulighed er gyldig hvis den ikke ændrer på mængden af integer-løsninger til programmet.
+
+	- Cutting Planes
+		- Det kaldes et cutting plane hvis en ny ulighed fjerner den optimale ikke-heltal løsning til et relaxed lineært program.
+		- Cutting plane algoritme for ILP'er kan findes på dias 8 slide 15.
+		- Man bruger f.eks. Gomory Cutting Plane Algorithm til at finde ud af om en given cutting plane er gyldig. Termination er ikke garanteret og man skal bruge specielle pivot-regler m.m.
+
+	- Brug af Cutting plane algoritme i TSP:
+		- Algoritme dias 8 side 23
+		- På et tidspunkt vil der ikke blive fundet nye cuts, og vi er ikke garanteret en integer løsning. Vi kan bruge branching til at løse dette.
+
+	- Branch-and-cut for TSP:
+		- Branch-and-bound med LP-relaxation samt nogle gyldige uligheder (fra plane cutting).
+		- Man må prøve sig frem mht. om man stoppe ved med at tilføje uligheder og branche i stedet.
+		- Giver en state-of-the-art solver. Ikke-triviel implementation.

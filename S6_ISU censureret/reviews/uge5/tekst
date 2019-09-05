@@ -1,0 +1,42 @@
+h1. Assignment 5 Review
+
+h2. Focal Points
+
+# *Implemented MsgQueue and argued why the given container was chosen:*
+For this focal point the group must have implemented the MsgQueue (i.e. the methods) using a container of their choice fulfilling the send() and receive() requirements. They must also explain why they have chosen this container.
+# *Working Sender and Receiver:*
+For this focal point the group must have implemented a _Sender_ and a _Receiver_  as well as having answered the theoretical questions.
+# *Extended the PLCS:*
+For this focal point the group must extend the PLCS solution from the previous assignment using the Message Queues implemented in the previous subexercises. It must satisfy the requirements in the assignment description.
+
+h2. Exercise-feedback:
+
+*Exercise 1:*
+Fine simple code expanded upon the template code. send() and receive() requirements are fulfilled. Using queue as a container was obvious.
+
+*Exercise 2:*
+Good simple sender function. Follows the diagram in exercise 2 closely (which is good). The handler opens the message as it is supposed to and you have already implemented it in a switch. Fine receiver. Good that you remember to clear up memory. The code runs as seen in the screencap. Theoretical questions answered correctly. All in all, good job.
+
+*Exercise 3:*
+Beautiful diagram, but it is a sequence diagram and not a state machine as you stated. It's fine though. Good effort for trying to use header files, but in this case only the only thing that matters is that the program works, as seen in your screencap. The code looks fine. The theoretical questions has been correctly answered. Good job.
+
+h2. Requirements:
+
+h3. Completion of focus points:
+
+# *Implemented MsgQueue and argued why the given container was chosen:*
+The group has implemented the MsgQueue using a queue-container and explained why they have used this. They have also inserted the message template code. (/)
+# *Working Sender and Receiver:*
+The _sender_ and _receiver_ methods have been implemented as seen in the second exercise. The receiver uses a handler to handle the different types of messages. The system works and the questions has been answered. (/)
+# *Extended the PLCS:*
+The solution has been extended to work with the car park, which is seen in the third exercise. It satisfies the requirements and the theoretical questions has been answered. (/)
+
+h3. Other requirements:
+
+*Relevant files in repository:* (/)
+*Makefiles included:* (/)
+
+h2. Conclusion
+
+All the focal points have been completed. Additional requirements are also fulfilled. We mark this exercise as OK. Good job. (/)
+

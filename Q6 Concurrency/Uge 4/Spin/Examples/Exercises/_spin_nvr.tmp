@@ -1,0 +1,9 @@
+never invariant {    /* !([] ((! ((p[0]@CS))) || (! ((p[1]@CS))))) */
+T0_init:
+	do
+	:: atomic { (! (((! ((p[0]@CS))) || (! ((p[1]@CS)))))) -> assert(!(! (((! ((p[0]@CS))) || (! ((p[1]@CS))))))) }
+	:: (1) -> goto T0_init
+	od;
+accept_all:
+	skip
+}

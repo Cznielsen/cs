@@ -1,0 +1,127 @@
+ USE CASES:
+_________________________________________________________________
+
+Navn: Køb varer
+Mål: Kunde ønsker at købe varer
+Initiering: Kunde skanner første vare ind eller vælger sprog
+Aktører: Kunde - Primær
+		 Varedatabase - Sekundær
+		 Betalingsautorisationssystem - Sekundær
+		 Føtex Personale - Sekundær
+Samtlige forekomster: én per SM
+Prækondition: Tændt SM som afventer kunde (hvilket implikerer at den er ledig)
+Postkondition: Kunde har korrekt skannet sine varer ind og betalt for dem.
+Datavariation:
+		Betalingsformer:
+				1. Kontakt
+				2. Debit-/Kreditkort
+				3. Købe-/Gavekort
+		Antal SM'er:
+				Mindst 1.
+		Varetyper:
+				1. Med stregkode
+				2. Uden stregkode
+				3. 18år+ varer
+
+Hovedscenarie:
+	1. Kunden vælger sprog på UI
+
+	2. Kunden sætter en vares stregkode op mod stregkodelæseren.
+		[Extention 1a] Kunden afbryder køb.
+
+	3.
+
+	4. SM'en laver et bip og den skannede vare bliver vist på skærmen.
+		[Extention 1b] Varen skal godkendes af personale.
+
+	5. SM beder kunden om at lægge den skannede vare på vægten
+
+	6. Kunden lægger sin vare på vægten
+		[Extention 1c] Kunde fortryder indskanning af vare.
+
+	7. Skridt 3-6 gentages indtil alle varer er på vægten
+
+	8. Kunden vælger vælger betalingsform på UI.
+		[Extention 1a: Kunden afbryder køb]
+		[Extention 2a: Kunde går tilbage på UI'et og forsætter med at skanne varer ind.]
+
+	9. SMs kontakter betalingsautorisationssystemet og gør klar til en transaktion
+
+	10. Kortterminalen lyser op og afventer Kundens kort
+		[Extention 3a] Kunde vælger kontant som betalingsform.
+		[Extention 4a] Kunden afbryder betaling.
+
+	11. Kunde indsætter sit betalingskort og betaler.
+
+	12. Betalingsautorisationssystemet modtager betalingen og sender 'OK'-signal til SM
+
+	13. SM modtager 'OK'-signalet og udskriver kvittering.
+
+	14. SM beder kunde om at tage sine varer
+
+	15. Kunden tager sine varer og evt. også kvitteringen.
+
+	16. SM ser at vægten er tom.
+
+	17. SM resetter og gør klar til næste kunde.
+
+Udvidelser: 
+		[Extention 1a: Kunde afbryder køb]
+			Hvis der er skannede varer tilkalder kunden personale
+			der afbryder købet. Ellers forlader kunden bare SM. Use case afsluttes.
+
+		[Extention 1b: Varen skal godkendes af personale]
+			Kunden tilkalder personalet og kundens ID bliver evt. tjekket.
+			hvis ID bliver godkendt forsættes hovedscenariet i trin 5.
+			Hvis ID ikke godkendes afbrydes købet og use case afsluttes.
+
+		[Extention 1c: Kunde fortryder indskanning af vare.]
+			Kunden tilkalder personalet der fjerner varen fra listen
+			over skannede varer og lægger varen til side. Use case forsættes
+			i hovedscenariets trin 2.
+
+		[Extention 2a: Kunde går tilbage og forsætter med at skanne varer ind.]
+			Kunden trykker på tilbagepilen. Use case forsættes i hovedscenariets trin 2.
+
+		[Extention 3a: Kunde vælger kontant betalingsform.]
+			Maskinen gør klar til at modtage kontante penge.
+			Kunden indsætter penge i form af godkendte mønter og sedler.
+			Maskinen tæller pengene og godkender købet når beløbet er nået.
+			Use case forsætter i trin 12 i hovedscenariet.
+
+			Hvis kunden ikke har penge nok kan vedkommende afbryde betalingen og 
+			få sine penge tilbage. Use case forsætter i trin 8 i hovedscenariet.
+
+		[Extention 4a: Kunde afbryder betaling]
+			GOTO trin 8 i hovedscenariet.
+
+__________________________________________________________________________________________
+
+  DESIGNPRIORITETER
+
+	Performance 3:
+		SM'en skal være hurtig nok til at kunden ikke føler at vedkommende venter mere
+		end nødvendigt, men ikke mere end dette.
+	Cost 2:
+		Vores maskine er lidt dyr, men sparer virksomhederne en masse penge ved at erstatte deres medarbejdere. De er ikke så kompliceret, og har derfor en nogenlunde time-to-market.
+	Usability 5:
+		Det skal være intuitivt at bruge maskinen, så selv folk der for første gang bruger den kan finde ud af at skanne deres varer ind og betale.
+	Maintainability 4:
+		Det skal være nemt at skifte dele af maskinen og hurtigt at opdatere eventuelle fejl i programmet, så den kan bruges dag efter dag med minimal downtime.
+	Reliability 4:
+		Vores maskine skal helst gå så lidt i stykker (både software- og hardwaremæssigt) som muligt, da det ellers påvirker kundernes oplevelse.
+
+______________________________________________________________________________________________
+
+BESKRIVELSE AF BLOKKE
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,10 @@
+People:
+
+	Studerende og undervisere (både gamle og unge, erfarne og uerfarne).
+	Sprog: Engelsk/Dansk
+
+Activities:
+
+	Information omkring kurserne. Aflevering af opgaver. Diskussion med andre studerende.
+	Uploade information til studerende. Review af afleverede opgaver.
+

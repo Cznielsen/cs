@@ -1,0 +1,15 @@
+SPOTIFY:
+
+   People:
+            Personer i alderen 10-80. Variende IT-kyndighed. Special-needs personer.
+
+   Activities:
+                 Ting som man gør mest skal være nemmest (f.eks. afspille musik), hvorimod at lave playlister gerne må være lidt mere kompliceret (men skal stadig være nemt så alle kan finde af det). Man skal kunne dele musik og playlister med andre. Folk skal også have muligheden for at opdage ny musik.
+
+   Context:
+            Alle steder hvor man kan slæbe afspilleren med.
+
+   Technology:
+                Input: Mobile enheder og computere
+                Output: Musik på enheden
+                Communication: Caste musikken til andre enheder

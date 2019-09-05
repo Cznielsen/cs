@@ -1,0 +1,55 @@
+h1. Assignment 8 Review
+
+h2. Focal Points:
+
+# *Explained the code:*
+For this focal point, the group must show they understand the notify-method by having answered all the questions in the first and second subexercises of exercise 1.
+# *Implemented API:*
+For this focal point, the group must implement the missing methods of _SubscriberId()_, _send()_, _subscribe()_ and _unsubscribe()_. Furthermore they must finish the files _Subscriber.cpp_ and _Publisher.cpp_. These are completed by doing subexercise 1.2.2 and 1.2.3.
+# *Answered Theoretical Questions:*
+For this focal point, the group must show they understand the point of this exercise by answering the theoretical questions. This point is completed by doing the last exercise.
+
+h2. Exercise Feedback:
+
+h3. Exercises 1.2.1
+
+Decent explanation of how the notify()-method works. It is correct that notify is a template so that it can handle different data-types, but why is this the case? Elaborate your answer. You forgot to explain why the second element of the iterator is selected. Your answers of the commented questions are correct.
+
+h3. Exercise 1.2.2
+
+Your unSubscribe()-method from the MDS looks good. It would've been nice had you added your other implementations to the wiki so I didn't have to look through your repository. The other methods are correctly implemented as well.
+
+h3. Exercise 1.2.3
+
+Your implementation of the missing code from Subscriber.cpp and Publisher.cpp works.  Good documentation of the test running. It would've been nice with an explanation of how the code is different after unsubscribing.
+
+h3. Exercise 1.3 (Optional)
+
+Skipped.
+
+h3. Exercise 1.4
+
+Good explanations of the questions in this last exercise. I think you misunderstood the first Singleton-question. It asks how we would implement the system without utilising the singleton pattern, as well as what the consequences of this would be. Good job on everything else!
+
+
+h2. Completion of Requirements:
+
+h3. Focal Points:
+
+# *Explained the code:*  ( / )
+The group has explained how the notify-method works as well as why the message is copied and why there is a deletion. They have not explained why the second element of the iterator is selected to be the subList, but this is a minor problem.
+# *Implemented API:* ( / )
+The group has implement the missing code nicely. It would've been nice had they added these implementations to the wiki so I didn't have to dig through the individual files. Approved nonetheless.
+# *Answered Theoretical Questions:* ( / )
+The group has answered all of the theoretical questions nicely. This is seen in their answer of the last exercise. Approved!
+
+h3. Other requirements:
+
+* *Relevant files in repository:* ( / )
+* *Make files in repository:* ( / )
+
+h2. Conclusion
+
+The group has completed all of the focal points as well as satisfying the other requirements. We mark this review as 'OK'. ( / )
+
+

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w:item xmlns="http://www.w3.org/2001/XMLSchema" xmlns:w="http://www.cs.au.dk/dWebTek/2014" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:shemaLocation="http://www.cs.au.dk/dWebTek/2014 schema.xsd">
+	<w:itemID>0004</w:itemID>
+	<w:itemName>Bubble Pepe</w:itemName>
+	<w:itemURL>http://czn.dk/products.html</w:itemURL>
+	<w:itemPrice>8</w:itemPrice>
+	<w:itemStock>6</w:itemStock>
+	<w:itemDescription>How Can Mirrors Be Real If Our Eyes Aren't Real</w:itemDescription>
+</w:item>

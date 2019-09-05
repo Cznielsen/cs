@@ -1,0 +1,61 @@
+% Created 2018-05-08 Tue 12:55
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{bm}
+\author{Christian Zhuang-Qing Nielsen\thanks{201504624, christian@czn.dk}}
+\date{\today}
+\title{dOpt Compulsory Assignment 5}
+\hypersetup{
+ pdfauthor={Christian Zhuang-Qing Nielsen},
+ pdftitle={dOpt Compulsory Assignment 5},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.3.1 (Org mode 9.1.2)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{Show that JohnsonCut Is An Approximation Algorithm}
+\label{sec:org40b245d}
+  For an algorithm to be an approximation algorithm, it has to return a feasible solution every time as well as having an approximation ratio (of \(2\) in this case). The JohnsonCut cannot return an unfeasible solution as it iterates over every edge and always adds a vertex to either \(S\) or \(T\) but not both at any given point. \newline \newline
+Regarding the ratio, the optimal the total weight is given by:
+\begin{equation*}
+\(\sum_v w(\{v\},S) + w(\{v\},T) = W\)
+\end{equation}
+Where \(W\) is the total weight of the edges. An optimal solution \(|C^*|\) will always be smaller than the total weight:
+\begin{equation*}
+\(W \geq |C^*|\)
+\end{equation}
+Any one of our proposed solutions \(|C|\) will then be at least half of what we found above as we only have the weights of the biggest set, which results in our solution also being at least half the size of the optimal solution:
+\begin{equation*}
+\(|C| \geq \frac{1}{2} \sum_v w(\{v\},S) + w(\{v\},T) \geq \frac{1}{2} |C^*|\)
+\end{equation}
+Of course our solution cannot exceed the total weight of the graph, which gives it the following property:
+\begin{equation*}
+\(|C| \leq W\)
+\end{equation}
+Since the cost of the optimal solution is no greater than \(W\) and the cost of any given solution is at least \(\frac{1}{2}\) the algorithm is bound by the approximation ratio:
+\begin{equation*}
+\(\frac{W}{\frac{1}{2}W} \leq 2\)
+\end{equation}
+\square
+\section{Running Time}
+\label{sec:org3813a6b}
+Since JohnsonCut has to iterate all vertices and edges in any given pass it has the running time of \(2|V|+|E|\) in all cases. The factor \(2\) is from adding vertices to the sets.
+\end{document}

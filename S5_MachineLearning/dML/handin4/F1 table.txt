@@ -1,0 +1,167 @@
+#### EM ####
+Clusters: 2 
+F_overall: 0.826075322764 
+Contingency table:
+ [[49  0  0]
+ [ 1 50 50]] 
+
+#### Lloyds ####
+Clusters: 2 
+F_overall: 0.751427288473 
+Contingency table:
+ [[50 25  6]
+ [ 0 25 44]] 
+
+#### EM ####
+Clusters: 3 
+F_overall: 0.738775138775 
+Contingency table:
+ [[ 0 14 26]
+ [ 1 36 24]
+ [49  0  0]] 
+
+#### Lloyds ####
+Clusters: 3 
+F_overall: 0.826597305589 
+Contingency table:
+ [[ 0 38 14]
+ [ 0 12 36]
+ [50  0  0]] 
+
+#### EM ####
+Clusters: 4 
+F_overall: 0.626091843834 
+Contingency table:
+ [[49  0  0]
+ [ 0 25 18]
+ [ 1 15  8]
+ [ 0 10 24]] 
+
+#### Lloyds ####
+Clusters: 4 
+F_overall: 0.635493283933 
+Contingency table:
+ [[ 0 28 19]
+ [ 1 10  1]
+ [ 0 12 30]
+ [49  0  0]] 
+
+#### EM ####
+Clusters: 5 
+F_overall: 0.565375639569 
+Contingency table:
+ [[ 0 10 24]
+ [ 1 15  8]
+ [27  0  0]
+ [ 0 25 18]
+ [22  0  0]] 
+
+#### Lloyds ####
+Clusters: 5 
+F_overall: 0.470153505032 
+Contingency table:
+ [[ 0  0  0]
+ [18 11  1]
+ [ 0 32 28]
+ [32  0  0]
+ [ 0  7 21]] 
+
+#### EM ####
+Clusters: 6 
+F_overall: 0.499139736236 
+Contingency table:
+ [[ 0 21 13]
+ [ 0  7 22]
+ [ 0 14 10]
+ [ 1  8  5]
+ [28  0  0]
+ [21  0  0]] 
+
+#### Lloyds ####
+Clusters: 6 
+F_overall: 0.494490450046 
+Contingency table:
+ [[24  0  0]
+ [ 0 18 22]
+ [ 0  0  0]
+ [ 0  6 21]
+ [ 0 25  6]
+ [26  1  1]] 
+
+#### EM ####
+Clusters: 7 
+F_overall: 0.454363528036 
+Contingency table:
+ [[ 0 15  8]
+ [ 0 13  5]
+ [ 0 12 14]
+ [23  0  0]
+ [ 0  3 17]
+ [26  0  0]
+ [ 1  7  6]] 
+
+#### Lloyds ####
+Clusters: 7 
+F_overall: 0.463565046774 
+Contingency table:
+ [[32  0  0]
+ [ 0 16  7]
+ [17  0  0]
+ [ 0 12 15]
+ [ 0  3 17]
+ [ 0  8 10]
+ [ 1 11  1]] 
+
+#### EM ####
+Clusters: 8 
+F_overall: 0.376381931211 
+Contingency table:
+ [[19  0  0]
+ [ 1  5  1]
+ [30  0  0]
+ [ 0 15 14]
+ [ 0  9  9]
+ [ 0  7  7]
+ [ 0  7  3]
+ [ 0  7 16]] 
+
+#### Lloyds ####
+Clusters: 8 
+F_overall: 0.433828096999 
+Contingency table:
+ [[ 0  8 13]
+ [32  0  0]
+ [ 0  2 15]
+ [ 1  5  1]
+ [ 0  6 12]
+ [ 0 15  5]
+ [17  0  0]
+ [ 0 14  4]] 
+
+#### EM ####
+Clusters: 9 
+F_overall: 0.361432919438 
+Contingency table:
+ [[ 0  1  7]
+ [ 0 10 10]
+ [19  0  0]
+ [ 3  4  0]
+ [ 1  8 13]
+ [ 0  4 10]
+ [ 0 18  5]
+ [ 0  5  5]
+ [27  0  0]] 
+
+#### Lloyds ####
+Clusters: 9 
+F_overall: 0.362307042429 
+Contingency table:
+ [[ 1  5  1]
+ [ 0  0  0]
+ [ 0  3 17]
+ [ 0 21  6]
+ [17  0  0]
+ [ 0  6  9]
+ [ 0  4  4]
+ [ 0 11 13]
+ [32  0  0]] 

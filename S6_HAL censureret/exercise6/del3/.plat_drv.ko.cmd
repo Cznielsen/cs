@@ -1,0 +1,1 @@
+cmd_/home/stud/hal/i3hal_f2018_weeabros/exercise6/del3/plat_drv.ko := arm-poky-linux-gnueabi-ld -EL -r  -T ./scripts/module-common.lds --build-id  -o /home/stud/hal/i3hal_f2018_weeabros/exercise6/del3/plat_drv.ko /home/stud/hal/i3hal_f2018_weeabros/exercise6/del3/plat_drv.o /home/stud/hal/i3hal_f2018_weeabros/exercise6/del3/plat_drv.mod.o ;  true

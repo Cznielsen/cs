@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Booking system front page">
+    <meta name="author" content="A,C & J">
+    <!--  <link rel="icon" href="../../../../favicon.ico"> -->
+
+    <title>Klinik Shen</title>
+	<link rel="icon" href="logo.png">
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="css/bootstrap-datepicker3.css" rel="stylesheet">
+	<link href="css/bootstrap-datepicker.min.css" rel="stylesheet">
+	
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+
+    <!-- Custom styles for this template -->
+    <link href="booking-top-fixed.css" rel="stylesheet">
+	
+	<script src="js/bootstrap-datepicker3.js"></script>
+	<script src="js/bootstrap-datepicker.min.js"></script>
+	
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="#">Klinik Shen Booking</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="http://klinikshen.dk/index.htm">Tilbage til klinikkens hjemmeside</a>
+          </li>
+		  <li class="nav-item">
+            <a style="position:absolute; right:20px;" class="nav-link">Tlf: 86 43 52 42 / 23 80 47 57</a>
+          </li>
+        </ul>	
+	 </div>
+    </nav>
+	
+	
+	<div class="booking-picker border">
+		<div class="row d-none d-sm-flex p-1 bg-dark text-white">
+			<h5 class="col-sm p-1 text-center">Book tid</h5>
+		</div>
+		<div class="booking-form">
+			<div class="container">
+				<div id="bookingHint" class="jumbotron container bg-primary text-white">
+					<p id="helptext" class="lead">Start bookingen ved at klikke på kaldeneren.
+				</div>
+				<div id="nameField" class="form-group invisible-div">
+					<label class="lead" for="navn">Navn:</label>
+					<input type="navn" class="form-control" id="navn" placeholder="Indtast navn" name="navn">
+				</div>
+				<div id="emailField" class="form-group invisible-div">
+					<label class="lead" for="email">Email:</label>
+					<input type="email" class="form-control" id="email" placeholder="Indtast email" name="email">
+				</div>
+				<div id="telephoneField" class="form-group invisible-div">
+					<label class="lead" for="phone">Telefon:</label>
+					<input type="phone" class="form-control" id="phone" placeholder="Indtast tlf. nummer" name="phone">
+				</div>
+				<label id="timeLabel" class="invisible-div lead" for="tid">Tid:</label>
+                <div id="timeField" class="input-group date form_time invisible-div" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii">			
+                    <input id="time-picker" class="form-control" size="16" type="text" placeholder="Tryk her" value="" readonly>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+					<button id="bookingButton" type="submit" class="btn btn-primary invisible-div">Book</button>
+                </div>
+				<input type="hidden" id="dtp_input2" value="" />					
+			</div>
+		</div>		
+		<div class="logoImage"><img id="companyLogo" src="logo.png"></div>
+	</div>
+		
+		
+	
+	<!-- Calendar -->
+	<div class="container-fluid">
+	<header>
+    <h4 class="display-4 mb-4 text-center">< Maj 2018 ></h4>
+    <div class="row d-none d-sm-flex p-1 bg-dark text-white">
+      <h5 class="col-sm p-1 text-center">Søndag</h5>
+      <h5 class="col-sm p-1 text-center">Mandag</h5>
+      <h5 class="col-sm p-1 text-center">Tirsdag</h5>
+      <h5 class="col-sm p-1 text-center">Onsdag</h5>
+      <h5 class="col-sm p-1 text-center">Torsdag</h5>
+      <h5 class="col-sm p-1 text-center">Fredag</h5>
+      <h5 class="col-sm p-1 text-center">Lørdag</h5>
+    </div>
+  </header>
+  <div class="row border border-right-0 border-bottom-0">
+    <div id="29a" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate d-none d-sm-inline-block bg-light text-muted">
+      <h5 class="row align-items-center">
+        <span class="date col-1">29</span>
+        <small class="col d-sm-none text-center text-muted">Sunday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="30a" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate d-none d-sm-inline-block bg-light text-muted">
+      <h5 class="row align-items-center">
+        <span class="date col-1">30</span>
+        <small class="col d-sm-none text-center text-muted">Monday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="1" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate d-none d-sm-inline-block bg-light text-muted">
+      <h5 class="row align-items-center">
+        <span class="date col-1">1</span>
+        <small class="col d-sm-none text-center text-muted">Tuesday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="2" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
+      <h5 class="row align-items-center">
+        <span class="date col-1">2</span>
+        <small class="col d-sm-none text-center text-muted">Wednesday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="3" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
+      <h5 class="row align-items-center">
+        <span class="date col-1">3</span>
+        <small class="col d-sm-none text-center text-muted">Thursday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="4" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
+      <h5 class="row align-items-center">
+        <span class="date col-1">4</span>
+        <small class="col d-sm-none text-center text-muted">Friday</small>
+        <span class="col-1"></span>
+      </h5>
+      <a class="event d-block p-1 pl-2 pr-2 mb-1 rounded text-truncate small bg-success text-white" title="Test Event 1">Booking 1</a>
+    </div>
+    <div id="5" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
+      <h5 class="row align-items-center">
+        <span class="date col-1">5</span>
+        <small class="col d-sm-none text-center text-muted">Saturday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div class="w-100"></div>
+    <div id="6" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
+      <h5 class="row align-items-center">
+        <span class="date col-1">6</span>
+        <small class="col d-sm-none text-center text-muted">Sunday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="7" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
+      <h5 class="row align-items-center">
+        <span class="date col-1">7</span>
+        <small class="col d-sm-none text-center text-muted">Monday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="8" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
+      <h5 class="row align-items-center">
+        <span class="date col-1">8</span>
+        <small class="col d-sm-none text-center text-muted">Tuesday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="9" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
+      <h5 class="row align-items-center">
+        <span class="date col-1">9</span>
+        <small class="col d-sm-none text-center text-muted">Wednesday</small>
+        <span class="col-1"></span>
+      </h5>
+      <a class="event d-block p-1 pl-2 pr-2 mb-1 rounded text-truncate small bg-success text-white" title="Test Event 2">Booking 2 11:30</a>
+      <a class="event d-block p-1 pl-2 pr-2 mb-1 rounded text-truncate small bg-success text-white" title="Test Event 3">Booking 3 13:30</a>
+    </div>
+    <div id="10" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
+      <h5 class="row align-items-center">
+        <span class="date col-1">10</span>
+        <small class="col d-sm-none text-center text-muted">Thursday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="11" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
+      <h5 class="row align-items-center">
+        <span class="date col-1">11</span>
+        <small class="col d-sm-none text-center text-muted">Friday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="12" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
+      <h5 class="row align-items-center">
+        <span class="date col-1">12</span>
+        <small class="col d-sm-none text-center text-muted">Saturday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div class="w-100"></div>
+    <div id="13" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
+      <h5 class="row align-items-center">
+        <span class="date col-1">13</span>
+        <small class="col d-sm-none text-center text-muted">Sunday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="14" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
+      <h5 class="row align-items-center">
+        <span class="date col-1">14</span>
+        <small class="col d-sm-none text-center text-muted">Monday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="15" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
+      <h5 class="row align-items-center">
+        <span class="date col-1">15</span>
+        <small class="col d-sm-none text-center text-muted">Tuesday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="16" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
+      <h5 class="row align-items-center">
+        <span class="date col-1">16</span>
+        <small class="col d-sm-none text-center text-muted">Wednesday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="17" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate" >
+      <h5 class="row align-items-center">
+        <span class="date col-1">17</span>
+        <small class="col d-sm-none text-center text-muted">Thursday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="18" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
+      <h5 class="row align-items-center">
+        <span class="date col-1">18</span>
+        <small class="col d-sm-none text-center text-muted">Friday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="19" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
+      <h5 class="row align-items-center">
+        <span class="date col-1">19</span>
+        <small class="col d-sm-none text-center text-muted">Saturday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div class="w-100"></div>
+    <div id="20" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
+      <h5 class="row align-items-center">
+        <span class="date col-1">20</span>
+        <small class="col d-sm-none text-center text-muted">Sunday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="21" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
+      <h5 class="row align-items-center">
+        <span class="date col-1">21</span>
+        <small class="col d-sm-none text-center text-muted">Monday</small>
+        <span class="col-1"></span>
+      </h5>
+      <a class="event d-block p-1 pl-2 pr-2 mb-1 rounded text-truncate small bg-success text-white" title="Test Event with Super Duper Really Long Title">Booking 4</a>
+    </div>
+    <div id="22" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
+      <h5 class="row align-items-center">
+        <span class="date col-1">22</span>
+        <small class="col d-sm-none text-center text-muted">Tuesday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="23" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
+      <h5 class="row align-items-center">
+        <span class="date col-1">23</span>
+        <small class="col d-sm-none text-center text-muted">Wednesday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="24" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
+      <h5 class="row align-items-center">
+        <span class="date col-1">24</span>
+        <small class="col d-sm-none text-center text-muted">Thursday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="25" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
+      <h5 class="row align-items-center">
+        <span class="date col-1">25</span>
+        <small class="col d-sm-none text-center text-muted">Friday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="26" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
+      <h5 class="row align-items-center">
+        <span class="date col-1">26</span>
+        <small class="col d-sm-none text-center text-muted">Saturday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div class="w-100"></div>
+    <div id="27" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
+      <h5 class="row align-items-center">
+        <span class="date col-1">27</span>
+        <small class="col d-sm-none text-center text-muted">Sunday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="28" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
+      <h5 class="row align-items-center">
+        <span class="date col-1">28</span>
+        <small class="col d-sm-none text-center text-muted">Monday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="29" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
+      <h5 class="row align-items-center">
+        <span class="date col-1">29</span>
+        <small class="col d-sm-none text-center text-muted">Tuesday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="30" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
+      <h5 class="row align-items-center">
+        <span class="date col-1">30</span>
+        <small class="col d-sm-none text-center text-muted">Wednesday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="31" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate ">
+      <h5 class="row align-items-center">
+        <span class="date col-1">31</span>
+        <small class="col d-sm-none text-center text-muted">Thursday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="1j" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate d-none d-sm-inline-block bg-light text-muted">
+      <h5 class="row align-items-center">
+        <span class="date col-1">1</span>
+        <small class="col d-sm-none text-center text-muted">Friday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="2j" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate d-none d-sm-inline-block bg-light text-muted">
+      <h5 class="row align-items-center">
+        <span class="date col-1">2</span>
+        <small class="col d-sm-none text-center text-muted">Saturday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div class="w-100"></div>
+    <div id="3j" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate d-none d-sm-inline-block bg-light text-muted">
+      <h5 class="row align-items-center">
+        <span class="date col-1">3</span>
+        <small class="col d-sm-none text-center text-muted">Sunday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="4j" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate d-none d-sm-inline-block bg-light text-muted">
+      <h5 class="row align-items-center">
+        <span class="date col-1">4</span>
+        <small class="col d-sm-none text-center text-muted">Monday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="5j" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate d-none d-sm-inline-block bg-light text-muted">
+      <h5 class="row align-items-center">
+        <span class="date col-1">5</span>
+        <small class="col d-sm-none text-center text-muted">Tuesday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="6j" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate d-none d-sm-inline-block bg-light text-muted">
+      <h5 class="row align-items-center">
+        <span class="date col-1">6</span>
+        <small class="col d-sm-none text-center text-muted">Wednesday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="7j" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate d-none d-sm-inline-block bg-light text-muted">
+      <h5 class="row align-items-center">
+        <span class="date col-1">7</span>
+        <small class="col d-sm-none text-center text-muted">Thursday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="8j" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate d-none d-sm-inline-block bg-light text-muted">
+      <h5 class="row align-items-center">
+        <span class="date col-1">8</span>
+        <small class="col d-sm-none text-center text-muted">Friday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+    <div id="9j" class="day col-sm p-2 border border-left-0 border-top-0 text-truncate d-none d-sm-inline-block bg-light text-muted">
+      <h5 class="row align-items-center">
+        <span class="date col-1">9</span>
+        <small class="col d-sm-none text-center text-muted">Saturday</small>
+        <span class="col-1"></span>
+      </h5>
+      <p class="d-sm-none">No events</p>
+    </div>
+	</div>
+	</div>
+	
+	 
+	
+ 
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../../../assets/js/vendor/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	<!-- Bootstrap Date-Picker Plugin -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+	<script type="text/javascript" src="./jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
+	
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="js/locales/bootstrap-datetimepicker.da.js" charset="UTF-8"></script>
+	<script type="text/javascript">
+		var name;
+		var phone;
+		var email;
+		var dateChosen;
+		var timeChosen;
+		var bookingNo = 5;
+		$('.form_time').datetimepicker({
+			language:  'da',
+			weekStart: 1,
+			autoclose: 1,
+			startView: 1,
+			minView: 0,
+			maxView: 1,
+			forceParse: 0
+		});
+		$(".day").click(function(){
+			dateChosen = event.target.id;
+			console.log(dateChosen);
+			$(".day").removeClass('active-date');
+			$(this).addClass('active-date');
+			$('#bookingHint').addClass('invisible-div');
+			$('#nameField').removeClass('invisible-div');
+			$('#emailField').removeClass('invisible-div');
+			$('#telephoneField').removeClass('invisible-div');
+			$('#timeLabel').removeClass('invisible-div');
+			$('#timeField').removeClass('invisible-div');
+			$('#bookingButton').removeClass('invisible-div');
+			
+		});
+		$('button').on('click', function(){
+			timeChosen = $("#time-picker").val();
+			name = $("#navn").val();
+			email = $("#email").val();
+			phone = $("#phone").val();
+			console.log("Time has been booked by "+name+" at "+timeChosen+".\nContact info:\n\tEmail - "+email+"\n\tPhone - "+phone);
+			alert("En tid er blevet booket til "+name+" klokken "+timeChosen+".\nDine indtastede kontaktoplysninger var:\n\tEmail - "+email+"\n\Tlf - "+phone+"\nFor at afbestille, kontakt klikken på 86 43 52 42 el. 23 80 47 57 og opgiv dit navn samt tid.")
+			$('#'+dateChosen).append('<a class="event d-block p-1 pl-2 pr-2 mb-1 rounded text-truncate small bg-success text-white" title="Test Event 7">Booking '+bookingNo+' '+timeChosen+'</a>');
+			bookingNo = bookingNo + 1;
+			$("#time-picker").val('');
+			$("#navn").val('');
+			$("#email").val('');
+			$("#phone").val('');
+		});
+	</script>
+ </body>
+</html>

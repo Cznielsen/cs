@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<w:item xmlns="http://www.w3.org/2001/XMLSchema" xmlns:w="http://www.cs.au.dk/dWebTek/2014" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:shemaLocation="http://www.cs.au.dk/dWebTek/2014 schema.xsd">
+	<w:itemID>0005</w:itemID>
+	<w:itemName>Dastardly Pepe</w:itemName>
+	<w:itemURL>http://czn.dk/products.html</w:itemURL>
+	<w:itemPrice>13</w:itemPrice>
+	<w:itemStock>5</w:itemStock>
+	<w:itemDescription>Mexican or a cartoon character, your imagination is the only imit for the stache of this Pepe.</w:itemDescription>
+</w:item>

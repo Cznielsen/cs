@@ -1,0 +1,715 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>dOpt 2018: Assignment 1</title>
+<!-- 2018-02-12 ma 00:26 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Christian Zhuang-Qing Nielsen, 201504624" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">dOpt 2018: Assignment 1</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. A description of your model. Describe the meaning of variables  and constraints.</a>
+<ul>
+<li><a href="#sec-1-1">1.1. Foods in unit/per 100 Gram.</a></li>
+<li><a href="#sec-1-2">1.2. Definitions</a></li>
+<li><a href="#sec-1-3">1.3. Constraints</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2. A short explanation of how you arrived at your model</a></li>
+<li><a href="#sec-3">3. An optimal solution found using <code>scipy.optimize.linprog</code></a>
+<ul>
+<li><a href="#sec-3-1">3.1. The code:</a></li>
+<li><a href="#sec-3-2">3.2. The output:</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> A description of your model. Describe the meaning of variables  and constraints.</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+The point of this exercise is to find the optimal diet (i.e. cheapest) that still satifies a number of given constraints.
+</p>
+
+<p>
+Here each food is a variable in the linear program, which means that the final solution consists of a linear combination of these variables (which in this case is amount of 100g of the given foodstuff). The foods I have chosen and their data can be seen in the tables below.
+</p>
+</div>
+
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Foods in unit/per 100 Gram.</h3>
+<div class="outline-text-3" id="text-1-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left"><b>Food</b></th>
+<th scope="col" class="right"><b>Carbs</b></th>
+<th scope="col" class="right"><b>Protein</b></th>
+<th scope="col" class="right"><b>Sugar</b></th>
+<th scope="col" class="right"><b>Fat</b></th>
+<th scope="col" class="right"><b>Energy (in KJ)</b></th>
+<th scope="col" class="right"><b>Price in DKK</b></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">Potatoes</td>
+<td class="right">17</td>
+<td class="right">2</td>
+<td class="right">0.8</td>
+<td class="right">0.1</td>
+<td class="right">318</td>
+<td class="right">1</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Ground beef (8-12%)</td>
+<td class="right">0</td>
+<td class="right">19.7</td>
+<td class="right">0</td>
+<td class="right">9.7</td>
+<td class="right">687</td>
+<td class="right">5.4</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Broccoli</td>
+<td class="right">7</td>
+<td class="right">2.8</td>
+<td class="right">1.7</td>
+<td class="right">0.4</td>
+<td class="right">138.07</td>
+<td class="right">2.4</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Oats (rough)</td>
+<td class="right">58.1</td>
+<td class="right">13.2</td>
+<td class="right">1</td>
+<td class="right">6.5</td>
+<td class="right">1532</td>
+<td class="right">1.2</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Skimmed Milk</td>
+<td class="right">4.7</td>
+<td class="right">3.5</td>
+<td class="right">4.7</td>
+<td class="right">0.1</td>
+<td class="right">138</td>
+<td class="right">1</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Butter</td>
+<td class="right">0.7</td>
+<td class="right">0.6</td>
+<td class="right">0</td>
+<td class="right">81.5</td>
+<td class="right">3094</td>
+<td class="right">9.9</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Chicken breast filet</td>
+<td class="right">0.5</td>
+<td class="right">20</td>
+<td class="right">0.5</td>
+<td class="right">1.5</td>
+<td class="right">400</td>
+<td class="right">9</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Jasmin Rice</td>
+<td class="right">78</td>
+<td class="right">8</td>
+<td class="right">0.3</td>
+<td class="right">1</td>
+<td class="right">1507</td>
+<td class="right">1.5</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Canned Tomatoes</td>
+<td class="right">3.1</td>
+<td class="right">1.1</td>
+<td class="right">3.1</td>
+<td class="right">0.5</td>
+<td class="right">88</td>
+<td class="right">1.234</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Vitamines and minerals in milligrams
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left"><b>Food</b></th>
+<th scope="col" class="right"><b>Vit. B12</b></th>
+<th scope="col" class="right"><b>Vit. C</b></th>
+<th scope="col" class="right"><b>Salt</b></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">Potatoes</td>
+<td class="right">0</td>
+<td class="right">26.4</td>
+<td class="right">0.6</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Ground Beef (8-12%)</td>
+<td class="right">0.0019</td>
+<td class="right">0</td>
+<td class="right">900</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Broccoli</td>
+<td class="right">0</td>
+<td class="right">121</td>
+<td class="right">8</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Oats (rough)</td>
+<td class="right">0</td>
+<td class="right">0</td>
+<td class="right">6.7</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Skimmed Milk</td>
+<td class="right">0.0048</td>
+<td class="right">1.3</td>
+<td class="right">44.3</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Butter</td>
+<td class="right">0.0017</td>
+<td class="right">0</td>
+<td class="right">361</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Chicken breast filet</td>
+<td class="right">0.0034</td>
+<td class="right">1</td>
+<td class="right">63</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Jasmin Rice</td>
+<td class="right">0</td>
+<td class="right">0</td>
+<td class="right">1.8</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Canned Tomatoes</td>
+<td class="right">0</td>
+<td class="right">11.3</td>
+<td class="right">143</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+The constraints I have chosen in this model are the following:
+</p>
+<ol class="org-ol">
+<li>The energy amount must be above 10000 kilojoules
+</li>
+<li>The amount of energy from carbohydrates must be between 45% and 60%.
+</li>
+<li>Energy from protein must be between 10% and 20%
+</li>
+<li>Energy from Fat must be between 25% and 40%
+</li>
+<li>Energy from added sugar must not exceed 10% of total energy amount.
+</li>
+<li>The amount of salt must be between 2.8g and 4.9g a day
+</li>
+<li>Must contain more than 2 &mu;g of Vitamine B12.
+</li>
+<li>Must contain moroe than 75 milligrams of vitamin C.
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Definitions</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+To write it all in a table I have defined some constants (to make writing the relation easier. The constants are the following:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left"><b>Price</b></th>
+<th scope="col" class="left"><code>=</code></th>
+<th scope="col" class="left">1x<sub>1</sub>+5.4x<sub>2</sub>+2.4x<sub>3</sub>+1.2x<sub>4</sub>+1x<sub>5</sub>+9.9x<sub>6</sub>+9x<sub>7</sub>+1.5x<sub>8</sub>+1.234x<sub>9</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left"><b>Energy</b></td>
+<td class="left"><code>=</code></td>
+<td class="left">318x<sub>1</sub>+687x<sub>2</sub>+138.07x<sub>3</sub>+1532x<sub>4</sub>+138x<sub>5</sub>+3094x<sub>6</sub>+400x<sub>7</sub>+1507x<sub>8</sub>+88x<sub>9</sub></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left"><b>Carbohydrates</b></td>
+<td class="left"><code>=</code></td>
+<td class="left">17x<sub>1</sub>+0x<sub>2</sub>+7x<sub>3</sub>+58.1x<sub>4</sub>+4.7x<sub>5</sub>+0.7x<sub>6</sub>+0.5x<sub>7</sub>+78x<sub>8</sub>+3.1x<sub>9</sub></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left"><b>Protein</b></td>
+<td class="left"><code>=</code></td>
+<td class="left">2x<sub>1</sub>+19.7x<sub>2</sub>+2.8x<sub>3</sub>+13.2x<sub>4</sub>+3.5x<sub>5</sub>+0.6x<sub>6</sub>+20x<sub>7</sub>+8x<sub>8</sub>+1.1x<sub>9</sub></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left"><b>Fat</b></td>
+<td class="left"><code>=</code></td>
+<td class="left">0.1x<sub>1</sub>+9.7x<sub>2</sub>+0.4x<sub>3</sub>+6.5x<sub>4</sub>+0.1x<sub>5</sub>+81.5x<sub>6</sub>+1.5x<sub>7</sub>+1x<sub>8</sub>+0.5x<sub>9</sub></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left"><b>Sugar</b></td>
+<td class="left"><code>=</code></td>
+<td class="left">0.8x<sub>1</sub>+0x<sub>2</sub>+1.7x<sub>3</sub>+1x<sub>4</sub>+4.7x<sub>5</sub>+0x<sub>6</sub>+0.5x<sub>7</sub>+0.3x<sub>8</sub>+3.1x<sub>9</sub></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left"><b>Vit.B12</b></td>
+<td class="left"><code>=</code></td>
+<td class="left">0x<sub>1</sub>+0.0019x<sub>2</sub>+0x<sub>3</sub>+0x<sub>4</sub>+0.0048x<sub>5</sub>+0.0017x<sub>6</sub>+0.0034x<sub>7</sub>+0x<sub>8</sub>+0x<sub>9</sub></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left"><b>Vit.C</b></td>
+<td class="left"><code>=</code></td>
+<td class="left">26.4x<sub>1</sub>+0x<sub>2</sub>+121x<sub>3</sub>+0x<sub>4</sub>+1.3x<sub>5</sub>+0x<sub>6</sub>+1x<sub>7</sub>+0x<sub>8</sub>+11.3x<sub>9</sub></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left"><b>Salt</b></td>
+<td class="left"><code>=</code></td>
+<td class="left">0.6x<sub>1</sub>+900x<sub>2</sub>+8x<sub>3</sub>+6.7x<sub>4</sub>+44.3x<sub>5</sub>+361x<sub>6</sub>+63x<sub>7</sub>+1.8x<sub>8</sub>+143x<sub>9</sub></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Constraints</h3>
+<div class="outline-text-3" id="text-1-3">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+</colgroup>
+
+<colgroup>
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left"><b>Constraints</b></th>
+<th scope="col" class="left"><b>Rewritten (for standard form)</b></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">Energy &ge; 10000 Kj</td>
+<td class="left">-Energy &le; -10000 Kj</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Carbohydrates &sdot; 17 &ge;  4500 Kj</td>
+<td class="left">-Carbohydrates &sdot; 17 &le; -4500 Kj</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Carbohydrates &sdot; 17 &le; 6000 Kj</td>
+<td class="left">No need to rewrite</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Protein &sdot; 17 &ge; 1000 Kj</td>
+<td class="left">-Protein &sdot; 17 &le; -1000 Kj</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Protein &sdot; 17 &le;  2000 Kj</td>
+<td class="left">No need to rewrite</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Fat &sdot; 38 &ge; 2500 Kj</td>
+<td class="left">-Fat &sdot; 38 &le; -2500 Kj</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Fat &sdot; 38 &le; 4000 Kj</td>
+<td class="left">No need to rewrite</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Sugar &sdot; 17 &le; 1000 Kj</td>
+<td class="left">No need to rewrite</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Salt &ge; 2800 mg</td>
+<td class="left">-Salt &le; -2800 mg</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Salt &le; 4900 mg</td>
+<td class="left">No need to rewrite</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Vit.B12 &ge; 0.002 mg</td>
+<td class="left">-Vit.B12 &le; -0.002 mg</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Vit.C &ge; 75 mg</td>
+<td class="left">-Vit.C &le; -75 mg</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> A short explanation of how you arrived at your model</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+I started using only macronutrients and energy as restrictions for my model, but the optimal solution turned out to consist of nothing but oats and butter. This was in my opinion not sustainable, so I added some additional constraints which were the amount of sugar, salt and vitamine-B12 and -C. This improved my results to a point where I consider it eddible (though still a bit bland). The biggest issue I had was the nutritional value of oats as it contained most vitamins and minerals while still being nutritional rich as well as very cheap. I tried including Calcium and potassium to improve the odds of having milk in the final solution, but as it turned out the oats had a higher concentrationo of those minerals as well, thus proving milk obsolete, so I decided not to include them.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> An optimal solution found using <code>scipy.optimize.linprog</code></h2>
+<div class="outline-text-2" id="text-3">
+<p>
+I will attach the code as a zipfile/py file
+</p>
+</div>
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> The code:</h3>
+<div class="outline-text-3" id="text-3-1">
+<div class="org-src-container">
+
+<pre class="src src-python" id="simplex"><span style="color: #a020f0;">import</span> scipy.optimize
+
+<span style="color: #a0522d;">Energy</span> = [318, 687, 138.07, 1532, 138, 3094, 400, 1507, 88]
+<span style="color: #a0522d;">Carb</span> = [17, 0, 7, 58.1, 4.7, 0.7, 0.5, 78, 3.1]
+<span style="color: #a0522d;">Protein</span> = [2, 19.7, 2.8, 13.2, 3.5, 0.6, 20, 8, 1.1]
+<span style="color: #a0522d;">Fat</span> = [0.1, 9.7, 0.4, 6.5, 0.1, 81.5, 1.5, 1, 0.5]
+<span style="color: #a0522d;">Sugar</span> = [0.8, 0, 1.7, 1, 4.7, 0, 0.5, 0.3, 3.1] <span style="color: #b22222;">#</span><span style="color: #b22222;">sukker i gram</span>
+<span style="color: #a0522d;">Vit_B12</span> = [0, 0.0019, 0, 0, 0.0048, 0.0017, 0.0034, 0, 0]  <span style="color: #b22222;">#</span><span style="color: #b22222;">B12 vitamin i milligram</span>
+<span style="color: #a0522d;">Vit_C</span> = [26.4, 0, 121, 0, 1.3, 0, 1, 0, 11.3] <span style="color: #b22222;">#</span><span style="color: #b22222;">C-vitamin i milligram</span>
+<span style="color: #a0522d;">Salt</span> = [0.6, 900, 8, 6.7, 44.3, 361, 63, 1.8, 143] <span style="color: #b22222;">#</span><span style="color: #b22222;">salt i miligram</span>
+
+<span style="color: #a0522d;">Ecarb</span> = [17*x <span style="color: #a020f0;">for</span> x <span style="color: #a020f0;">in</span> Carb]
+<span style="color: #a0522d;">ESugar</span> = [17*x <span style="color: #a020f0;">for</span> x <span style="color: #a020f0;">in</span> Sugar]
+<span style="color: #a0522d;">EProtein</span> = [17*x <span style="color: #a020f0;">for</span> x <span style="color: #a020f0;">in</span> Protein]
+<span style="color: #a0522d;">EFat</span> = [38*x <span style="color: #a020f0;">for</span> x <span style="color: #a020f0;">in</span> Fat]
+
+<span style="color: #a0522d;">c</span> = [1, 5.4, 2.4, 1.2, 1, 9.9, 9, 1.5, 1.234]
+<span style="color: #a0522d;">A</span> = [
+     [-1*x <span style="color: #a020f0;">for</span> x <span style="color: #a020f0;">in</span> Energy],
+     [-1*x <span style="color: #a020f0;">for</span> x <span style="color: #a020f0;">in</span> Ecarb],
+     Ecarb,
+     [-1*x <span style="color: #a020f0;">for</span> x <span style="color: #a020f0;">in</span> EProtein],
+     EProtein,
+     [-1*x <span style="color: #a020f0;">for</span> x <span style="color: #a020f0;">in</span> EFat],
+     EFat,
+     ESugar,
+     [-1*x <span style="color: #a020f0;">for</span> x <span style="color: #a020f0;">in</span> Salt],
+     Salt,
+     [-1*x <span style="color: #a020f0;">for</span> x <span style="color: #a020f0;">in</span> Vit_B12],
+     [-1*x <span style="color: #a020f0;">for</span> x <span style="color: #a020f0;">in</span> Vit_C]]
+<span style="color: #a0522d;">b</span> = [-10000, -4500, 6000, -1000, 2000, -2500, 4000, 1000, -2800, 4900, -0.002, -75]
+
+<span style="color: #a020f0;">print</span>(scipy.optimize.linprog(c, A, b))
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> The output:</h3>
+<div class="outline-text-3" id="text-3-2">
+<pre class="example">
+    fun: 25.52211698303648
+message: 'Optimization terminated successfully.'
+    nit: 17
+  slack: array([8.03669393e+02, 6.96330607e+02, 1.50000000e+03, 1.00000000e+03,
+      2.10000000e+03, 0.00000000e+00, 0.00000000e+00, 6.80905411e+02,
+      0.00000000e+00, 0.00000000e+00, 2.62708200e-03, 0.00000000e+00])
+ status: 0
+success: True
+      x: array([0.        , 2.34439788, 0.2161664 , 5.00314242, 0.        ,
+      0.10160355, 0.        , 0.        , 4.32246602])
+</pre>
+
+<p>
+This is the optimal solution for the restraints. According to this solution, each day I will have to eat:
+</p>
+<ul class="org-ul">
+<li>234 grams of ground beef.
+</li>
+<li>22 grams of broccoli.
+</li>
+<li>500 grams of oats.
+</li>
+<li>10 grams of butter.
+</li>
+<li>432 grams of canned tomatoes.
+</li>
+</ul>
+
+<p>
+To optimize my diet. I deem this solution doable (basically italian food with some extra oats).
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Christian Zhuang-Qing Nielsen, 201504624</p>
+<p class="date">Created: 2018-02-12 ma 00:26</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

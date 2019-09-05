@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Booking system front page">
+    <meta name="author" content="A,C & J">
+
+    <title>Klinik Shen</title>
+	<link rel="icon" href="logo.png">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="css/bootstrap-datepicker3.css" rel="stylesheet">
+	<link href="css/bootstrap-datepicker.min.css" rel="stylesheet">
+	<link href="grid.css" rel="stylesheet">
+	
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+
+    <!-- Custom styles for this template -->
+    <link href="booking-top-fixed.css" rel="stylesheet">
+	
+	<script src="js/bootstrap-datepicker3.js"></script>
+	<script src="js/bootstrap-datepicker.min.js"></script>
+	
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a id="lolGet" class="navbar-brand" href="#">Klinik Shen Booking</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="rigtigeside.html">Tilbage til klinikkens hjemmeside</a>
+          </li>
+		  <li class="nav-item">
+            <a class="nav-link" href="index.html">Tilbage til forsiden</a>
+          </li>
+		  <li class="nav-item">
+            <a style="position:absolute; right:20px;" class="nav-link">Tlf: 86 43 52 42 / 23 80 47 57</a>
+          </li>
+        </ul>	
+	 </div>
+    </nav>
+	
+	<div id="adminCalendar" class="">
+		<header>
+		<div class="row d-none d-sm-flex p-1 bg-dark text-white">
+		<h5 class="col-sm p-1 text-center">Mandag</h5>
+		<h5 class="col-sm p-1 text-center">Tirsdag</h5>
+		<h5 class="col-sm p-1 text-center">Onsdag</h5>
+		<h5 class="col-sm p-1 text-center">Torsdag</h5>
+		<h5 class="col-sm p-1 text-center">Fredag</h5>
+		<h5 class="col-sm p-1 text-center">Lørdag</h5>
+		</div>
+		</header>
+		<div id="bookingFields" class="row d-none d-sm-flex p-1">
+			<div id="mandag" class="col-sm "></div>
+			<div id="tirsdag" class="col-sm "></div>
+			<div id="onsdag" class="col-sm "></div>
+			<div id="torsdag" class="col-sm "></div>
+			<div id="fredag" class="col-sm "></div>
+			<div id="lørdag" class="col-sm "></div>
+		</div>
+	</div>
+		
+	
+	
+	 
+	
+ 
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../../../assets/js/vendor/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	<!-- Bootstrap Date-Picker Plugin -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+	<script type="text/javascript" src="./jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
+	
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="js/locales/bootstrap-datetimepicker.da.js" charset="UTF-8"></script>
+	<script type="text/javascript">
+		$('#lolGet').on('click', function(){
+			var myArray = sessionStorage.getItem('savedBookings');
+			console.log(myArray);
+		});
+		var booking1 = {id:"10293", date:"4", time:"13:30", name:"Karin", email:"kkk@lol.com", phone:"12345678"};
+		var booking2 = {id:"03248", date:"9", time:"11:30", name:"Hanne", email:"hhh@lol.com", phone:"12345678"};
+		var booking3 = {id:"09833", date:"9", time:"14:30", name:"Bob Ibsen", email:"bbb@lol.com", phone:"12345678"};
+		var booking4 = {id:"09983", date:"21", time:"9:00", name:"Per Lis", email:"plp@lol.com", phone:"12345678"};
+		var bookings = [booking1, booking2, booking3, booking4];
+		
+		var mandage = ["7","14","21","28"];
+		var tirsdage = ["1","8","15","22","29"];
+		var onsdage = ["2","9","16","23","30"];
+		var torsdage = ["3","10","17","24","31"];
+		var fredage = ["4","11","18","25"];
+		var lørdage = ["5","12","19","26"];
+		
+		for(var i = 0; i < bookings.length; i++) {
+			var day = bookings[i].date
+			var booking = bookings[i];
+			
+			if (mandage.includes(booking.date)) {	
+				$('#mandag').append('<div id="'+booking.id+'" class="bg-light appointment"><h2 class="display-4 lead">'+booking.time+'</h2><hr class="my-4"><p>'+booking.name+'<br/>'+booking.email+'<br/>'+booking.phone+'</p><div class="bg-danger cancelAppointment">X</div></div><br/>');
+			}
+			if (tirsdage.includes(booking.date)) {	
+				$('#tirsdag').append('<div id="'+booking.id+'" class="bg-light appointment"><h2 class="display-4 lead">'+booking.time+'</h2><hr class="my-4"><p>'+booking.name+'<br/>'+booking.email+'<br/>'+booking.phone+'</p><div class="bg-danger cancelAppointment">X</div></div><br/>');
+			}
+			if (onsdage.includes(day)) {	
+				$('#onsdag').append('<div id="'+booking.id+'" class="bg-light appointment"><h2 class="display-4 lead">'+booking.time+'</h2><hr class="my-4"><p>'+booking.name+'<br/>'+booking.email+'<br/>'+booking.phone+'</p><div class="bg-danger cancelAppointment">X</div></div><br/>');
+			}
+			if (torsdage.includes(day)) {	
+				$('#torsdag').append('<div id="'+booking.id+'" class="bg-light appointment"><h2 class="display-4 lead">'+booking.time+'</h2><hr class="my-4"><p>'+booking.name+'<br/>'+booking.email+'<br/>'+booking.phone+'</p><div class="bg-danger cancelAppointment">X</div></div><br/>');
+			}
+			if (fredage.includes(day)) {	
+				$('#fredag').append('<div id="'+booking.id+'" class="bg-light appointment"><h2 class="display-4 lead">'+booking.time+'</h2><hr class="my-4"><p>'+booking.name+'<br/>'+booking.email+'<br/>'+booking.phone+'</p><div class="bg-danger cancelAppointment">X</div></div><br/>');
+			}
+			if (lørdage.includes(day)) {	
+				$('#lørdag').append('<div id="'+booking.id+'" class="bg-light appointment"><h2 class="display-4 lead">'+booking.time+'</h2><hr class="my-4"><p>'+booking.name+'<br/>'+booking.email+'<br/>'+booking.phone+'</p><div class="bg-danger cancelAppointment">X</div></div><br/>');
+			}
+		}
+		$(".cancelAppointment").click(function(){
+			var cancelledAppointment = $(this).parent().attr('id');
+			console.log("id: "+cancelledAppointment);
+			$(this).parent().remove();
+			var index = bookings.map(function(item) { return item.id; }).indexOf(cancelledAppointment);
+			console.log("Index: "+index);
+			bookings.splice(index, 1);
+			console.log(bookings);
+		});
+	</script>
+ </body>
+</html>

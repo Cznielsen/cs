@@ -1,0 +1,16 @@
+AMOUNT OF PRODUCERS AND THEIR TIMES:
+
+1 = 1 ms
+2 = 1 ms
+4 = 2 ms
+8 = 2 ms
+16 = 3 ms
+32 = 5 ms
+64 = 10 ms
+128 = 18 ms
+256 = 37 ms
+512 = 65 ms
+1024 = 150 ms
+2048 = 370 ms
+4096 = 971 ms
+

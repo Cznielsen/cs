@@ -1,0 +1,25 @@
+METODEKORT (PACT):
+
+Hvad:
+	PACT er en metode hvor man deler problemet op i fire punkter: People, Activities, Contexts & Technologies.
+
+Hvorfor:
+	PACT bruges som et framework til at hjælpe designerne med at forstå de personer, som skal bruge systemet,
+	de skal forstå de aktiviteter systemet skal bruges i, de skal forstå de tilfælde (kontekster) hvori systemet bruges
+	og sidst men ikke mindst skal de forstå den teknologi de har at gøre godt med (dvs. inputformer som f.eks. motion detection eller et tastatur)
+	men også output.
+
+Hvordan:
+	P - Interviewer/observerer/personaer
+
+	A - Observation/Field study/workshop(lab)
+
+	C - Observation/field study
+
+	T - Brainstorm/Research/prototypes/deltagertests
+
+Hvornår:
+	Det er en af de første ting man gør, eftersom mange af de grundlæggende designvalg træffes på baggrund af f.eks. PACT.
+
+Kilde:
+	Benyon side 25-45

@@ -1,0 +1,11 @@
+0 Threads = 6970 ms
+1 Thread  = 6976 ms
+2 Threads = 4456 ms
+3 Threads = 3391 ms
+4 Threads = 2687 ms
+5 Threads = 2439 ms
+6 Threads = 2164 ms
+7 Threads = 2009 ms
+8 Threads = 1955 ms
+9 Threads = 1950 ms
+10 Threads = 1903 ms

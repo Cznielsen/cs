@@ -1,0 +1,24 @@
+{
+  "name": "iot-project",
+  "version": "1.0.0",
+  "description": "Example AU IOT project",
+  "main": "src/wot-server.js",
+  "scripts": {
+    "start": "node src/wot-server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michal Ratajsky <michal.ratajsky@post.au.dk>",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "latest",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "mqtt": "^2.18.8",
+    "msgpack5": "^4.2.0",
+    "node-dht-sensor": "0.0.34",
+    "node-json2html": "^1.2.0",
+    "object-observer": "^1.0.3",
+    "onoff": "^3.2.1",
+    "request": "^2.88.0"
+  }
+}

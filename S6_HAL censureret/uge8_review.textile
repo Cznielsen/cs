@@ -1,0 +1,27 @@
+h1. Assignment 8 Review
+
+h2. Exercise Goals:
+
+h3. Oprettelse af attributter
+
+Gruppen har implementeret både show og store funktion. De har deklareret attributterne og gjort dem til default. De har testet dem på target og dokumenteret dette. Det ville dog have været rart med lidt mere tekst til hver vedhæftede kodestump. Mål godkendt (/)
+
+h3. Lave timer funktion
+
+Gruppen har lavet en timerfunktion, men de har overhovedet ikke beskrevet hvad de har gjort bare dumpet lidt kodestumper hist og her. Derfor godkender vi ikke dette mål. (x)
+
+h3. Lave attribute funktionalitet
+
+Gruppen har ikke vist deres dmesg output, de har ikke skrevet noget tekst og der er klippet i deres .gif af testen. Vi godkender ikke dette mål. (x)
+
+h2. Formal Criteria:
+
+* *Code snippets:* (/)
+* *Full source code + Makefile in repo:* (/)
+* *Pictures/screen dumps to document test:* Only partially (x)
+* *Test results are commented:* Only partially (x)
+
+h2. Konklusion
+
+Gruppen har næsten ikke skrevet noget tekst selv i wikien (bare kopieret opgavebeskrivelsen). De har dumpet en masse kode uden at kommentere dette. Vi sender denne opgave til eksternt review. (x)
+

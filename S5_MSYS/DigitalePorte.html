@@ -1,0 +1,280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr" class="js" lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>The AVR Microcontroller Digital I/O Ports | AVR Tutorials</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" href="http://www.avr-tutorials.com/misc/favicon.ico" type="image/x-icon">
+<meta name="description" content="Introduction to AVR Digital Input/Output Atmel AVR 8-bits microcontrollers provide pins to take in/output information form/to the outside world in the form of logic values. These pins are usually organised in groups of eight (8) and referred to as a port. The AVR use the alphabet to name these port, example PortA, PortB, etc.">
+<meta name="keywords" content="avr,tutorial,microcontroller,atmel,atmega,atmega8515,programming,asm,assembly,gcc,circuit,code,learn,source code">
+<link rel="canonical" href="http://www.avr-tutorials.com/digital/about-avr-8-bit-microcontrollers-digital-io-ports">
+<meta name="revisit-after" content="1 day">
+    <link type="text/css" rel="stylesheet" media="all" href="DigitalePorte-filer/css_0e2420c18a14c656f3b953cd8a0bbe9b.css">
+    <script type="text/javascript" async="" src="DigitalePorte-filer/ga.js"></script><script src="DigitalePorte-filer/cbgapi.loaded_1" async=""></script><script src="DigitalePorte-filer/cbgapi.loaded_0" async=""></script><script type="text/javascript" src="DigitalePorte-filer/js_75c8ebc4129e0cfc7ba82cf24a5fcac8.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, { "basePath": "/", "googleanalytics": { "trackOutbound": 1, "trackMailto": 1, "trackDownload": 1, "trackDownloadExtensions": "7z|aac|arc|arj|asf|asx|avi|bin|csv|doc|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls|xml|z|zip" } });
+//--><!]]>
+</script>
+  <!--[if lt IE 7]>
+  <style type="text/css" media="all">@import "/sites/all/themes/fourseasons/fix-ie.css";</style>
+  <![endif]-->
+<script type="text/javascript" charset="utf-8" async="" src="DigitalePorte-filer/button.js"></script></head>
+
+<body class="sidebar-left">
+
+<div id="pagewrapper">
+
+  
+
+  <div id="headline">
+    <a href="http://www.avr-tutorials.com/" title="AVR Tutorials">AVR Tutorials</a><div id="site-slogan">The Best AVR Microcontroller Tutorials on the Web</div>  </div>
+  
+  
+  <div id="navigation-primary">
+                  <ul class="links primary-links"><li class="menu-203 first"><a href="http://www.avr-tutorials.com/" title="">Home</a></li>
+<li class="menu-212"><a href="http://www.avr-tutorials.com/general/welcome-general-information-page" title="Welcome To The General Information Page">General</a></li>
+<li class="menu-168"><a href="http://www.avr-tutorials.com/assembly/basics-assembly-language" title="The Basics of Assembly Language">Assembly</a></li>
+<li class="menu-184 active-trail active"><a href="http://www.avr-tutorials.com/digital/about-avr-8-bit-microcontrollers-digital-io-ports" title="About the AVR 8-bit Microcontrollers Digital I/O Ports" class="active active">Digital I/O</a></li>
+<li class="menu-189"><a href="http://www.avr-tutorials.com/interrupts/about-avr-8-bit-microcontrollers-interrupts" title="About the AVR 8-bit Microcontrollers Interrupts">Interrupts</a></li>
+<li class="menu-210"><a href="http://www.avr-tutorials.com/interfacing/welcome-interfacing-page" title="Welcome To The Interfacing Page">Interfacing</a></li>
+<li class="menu-222"><a href="http://www.avr-tutorials.com/Analog/avr-8-bit-microcontroller-analog-io-peripherals" title="AVR Microcontroller Analog I/O Peripherals">Analog I/O</a></li>
+<li class="menu-218"><a href="http://www.avr-tutorials.com/functions/useful-embedded-avr-c-fuctions" title="Useful Embedded AVR C Fuctions">C Functions</a></li>
+<li class="menu-224"><a href="http://www.avr-tutorials.com/ClassResources/avr-microcontroller-class-resources" title="AVR Microcontroller Class Resources">Class Resources</a></li>
+<li class="menu-216"><a href="http://www.avr-tutorials.com/projects/avr-microcontroller-based-projects" title="AVR Microcontroller Projects">Projects</a></li>
+<li class="menu-243"><a href="http://www.avr-tutorials.com/avr-studio-5/avr-studio-5" title="AVR Studio 5">AVR Studio 5</a></li>
+<li class="menu-250"><a href="http://www.avr-tutorials.com/avr-studio-6/avr-studio-6" title="AVR Studio 6">AVR Studio 6</a></li>
+<li class="menu-257 last"><a href="http://www.avr-tutorials.com/content/amazon-store" title="Amazon Store">Amazon Store</a></li>
+</ul>            <div style="clear:both;"></div>
+  </div>
+
+  <div id="navigation-secondary">
+        <ul class="links secondary-links"><li style="border:none;">&nbsp;</li></ul>    <div style="clear:both;"></div>
+  </div>
+
+  <div id="header-image">
+    <div id="block-search-0" class="clear-block block block-search">
+
+
+  <div class="content"><form action="/digital/about-avr-8-bit-microcontrollers-digital-io-ports" accept-charset="UTF-8" method="post" id="search-block-form">
+<div><div class="container-inline">
+  <div class="form-item" id="edit-search-block-form-1-wrapper">
+ <label for="edit-search-block-form-1">Search this site: </label>
+ <input maxlength="128" name="search_block_form" id="edit-search-block-form-1" size="15" title="Enter the terms you wish to search for." class="form-text" type="text">
+</div>
+<input name="op" id="edit-submit" value="Search" class="form-submit" type="submit">
+<input name="form_build_id" id="form-9829330cef76fa85b627964cc15f0dde" value="form-9829330cef76fa85b627964cc15f0dde" type="hidden">
+<input name="form_id" id="edit-search-block-form" value="search_block_form" type="hidden">
+</div>
+
+</div></form>
+</div>
+</div>
+<div id="block-block-8" class="clear-block block block-block">
+
+
+  <div class="content"><script type="text/javascript" src="DigitalePorte-filer/plusone.js" gapi_processed="true"></script>
+
+<div style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 38px; height: 24px;" id="___plusone_0"><iframe ng-non-bindable="" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 38px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 24px;" tabindex="0" vspace="0" id="I0_1515854405507" name="I0_1515854405507" src="DigitalePorte-filer/fastbutton.html" data-gapiattached="true" title="G+" width="100%" frameborder="0"></iframe></div>
+
+<iframe id="twitter-widget-0" scrolling="no" allowtransparency="true" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" style="position: static; visibility: visible; width: 61px; height: 20px;" title="Twitter Tweet Button" src="DigitalePorte-filer/tweet_button.html" frameborder="0"></iframe><script type="text/javascript" src="DigitalePorte-filer/widgets.js"></script>
+
+<iframe src="//www.facebook.com/plugins/like.php?href=http://www.avr-tutorials.com/digital/about-avr-8-bit-microcontrollers-digital-io-ports&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" style="border:none; overflow:hidden; width:450px; height:21px;" allowtransparency="true" frameborder="0"></iframe></div>
+</div>
+  </div>
+
+
+  <div id="navigation-breadcrumb">
+  <div class="breadcrumb"><a href="http://www.avr-tutorials.com/">Home</a></div>  </div>
+
+  <div style="clear:both;"></div>
+  <div id="contentwrapper">
+
+          <div id="sidebar-left" class="sidebar">
+                <div id="block-menu-menu-peripherals" class="clear-block block block-menu">
+
+  <h2>Digital Input/Output</h2>
+
+  <div class="content"><ul class="menu"><li class="leaf first"><a href="http://www.avr-tutorials.com/digital/digital-input-output-assembly-programming-atmel-8-bits-avr-microcontrollers" title="Digital Input Output Assembly Programming">Assembly Programming</a></li>
+<li class="leaf last"><a href="http://www.avr-tutorials.com/digital/digital-input-output-c-programming-atmel-avr-8-bits-microcontrollers" title="Digital Input Output C Programming">C Programming</a></li>
+</ul></div>
+</div>
+<div id="block-block-5" class="clear-block block block-block">
+
+
+  <div class="content"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-4218864777728079";
+/* AVRTutorial */
+google_ad_slot = "7429568670";
+google_ad_width = 160;
+google_ad_height = 600;
+//--><!--
+google_ad_client = "ca-pub-4218864777728079";
+/* AVRTutorial */
+google_ad_slot = "7429568670";
+google_ad_width = 160;
+google_ad_height = 600;
+//-->
+</script><script type="text/javascript" src="DigitalePorte-filer/show_ads.js">
+</script></div>
+</div>
+      </div>
+    
+    <div id="middle-content">
+      <div class="content-padding">
+	            <h1>The AVR Microcontroller Digital I/O Ports</h1>                                        
+	  <div class="special-block">
+	  <div id="block-block-10" class="clear-block block block-block">
+
+
+  <div class="content"><div style="display:block;width:728px;height:90px;margin:0 auto;">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-4218864777728079";
+/* AVRTutorial2 */
+google_ad_slot = "6762528877";
+google_ad_width = 728;
+google_ad_height = 90;
+//--><!--
+google_ad_client = "ca-pub-4218864777728079";
+/* AVRTutorial2 */
+google_ad_slot = "6762528877";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script><script type="text/javascript" src="DigitalePorte-filer/show_ads.js">
+</script></div>
+</div>
+</div>
+	  </div>
+
+          
+<div id="node-16" class="node">
+
+
+
+  
+  <div class="content">
+    <div align="justify">
+<h3><b>Introduction to AVR Digital Input/Output</b></h3>
+<hr>
+Atmel AVR 8-bits microcontrollers provide pins to <b>take in</b>/<b>output</b>
+ information form/to the outside world in the form of logic values. 
+These pins are usually organised in groups of eight (8) and referred to 
+as a port. The AVR use the alphabet to name these port, example <b>PortA, PortB, etc.</b> The figure below shows the pins of an AVR 8-bit microcontroller which has four (4) digital I/O ports: <b> PortA, PortB, PortC</b> and <b>PortD</b>. The pins of PortA are: <b>PA0 - PA7</b>.
+<p><br><br>
+</p><center><img alt="" src="DigitalePorte-filer/I-O%2520Pins.jpg"></center><p></p>
+<p><b><u>Note</u></b><br>
+Notice the alternate name of the Ports pins. The AVR microcontollers are
+ designed to allow dual use of most of its pins. This has the advantage 
+of allowing a developer to use these pins as I/O pins if the function 
+they are provided for is not being utilized.</p>
+<p>In this AVR tutorial we are only concern with the pins in there 
+Digital I/O function, so for now just forget they have alternate 
+capabilities.</p>
+<p><u><b>Important</b></u><br>
+The pins of the AVR microcontroller are not fixed as input or output at 
+the manufacturing stage, these pins are software configurable which is 
+the topic of the section below.</p>
+<p><br></p>
+<h3><b>Associated I/O Registers</b></h3>
+<hr>
+Each of the AVR Digital I/O ports is associated with three (3) I/O register. A Data Direction Register (<b>DDRx</b>), A Pin Register (<b>PINx</b>) and a Port Register (<b>PORTx</b>). Where <b>x</b> is the port <b>A, B, C, etc. </b>.<br>
+<br><br>
+<b><u>DDRx - Port X Data Direction Register</u></b><br>
+<img alt="AVR Microcontroller DDR Register" src="DigitalePorte-filer/DDRx.jpg">
+<p>DDRx is an 8-bit register which stores configuration information for the pins of Portx. Writing a <b>1</b> in the pin location in the DDRx makes the physical pin of that port an output pin and writing a <b>0</b> makes that pin an input pin.</p>
+<p><b>Note:</b> Each physical pin of a port is configured independently 
+and thus a port can have some of its pins configured as input an the 
+others as output pins.<br>
+<br><br>
+<b><u>PINx - Port X Input Pins Register</u></b><br>
+<img alt="AVR Microcontroller Pin Register" src="DigitalePorte-filer/PINx.jpg"></p>
+<p>PINx is an 8-bit register that stores the logic value, the current 
+state, of the physical pins on Portx. So to read the values on the pins 
+of Portx, you read the values that are in its PIN register.<br>
+<br><br>
+<b><u>PORTx - Port X Data Register</u></b><br>
+<img alt="AVR Microcontoller Port Register" src="DigitalePorte-filer/PORTx.jpg"></p>
+<p>PORTx is an 8-bit register which stores the logic values that 
+currently being outputted on the physical pins of Portx if the pins are 
+configured as output pins. So to write values to a port, you write the 
+values to the PORT register of that port.</p>
+<p>AVR Tutorials hope this AVR tutorial on the AVR microcontroller 
+digital I/O ports was benificial to you and looks forward to your 
+continued visit for all your microcontroller tutorial needs.
+</p></div>
+  </div>
+
+  <div class="clear-block clear">
+    <div class="meta">
+        </div>
+
+      </div>
+
+</div>
+<div id="block-block-14" class="clear-block block block-block">
+
+
+  <div class="content"><script type="text/javascript" src="DigitalePorte-filer/plusone.js" gapi_processed="true"></script>
+
+
+<div style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent none repeat scroll 0% 0%; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 38px; height: 24px;" id="___plusone_1"><iframe ng-non-bindable="" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 38px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 24px;" tabindex="0" vspace="0" id="I0_1515854405601" name="I0_1515854405601" src="DigitalePorte-filer/fastbutton_002.html" data-gapiattached="true" title="G+" width="100%" frameborder="0"></iframe></div>
+
+<iframe id="twitter-widget-1" scrolling="no" allowtransparency="true" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" style="position: static; visibility: visible; width: 61px; height: 20px;" title="Twitter Tweet Button" src="DigitalePorte-filer/tweet_button_002.html" frameborder="0"></iframe><script type="text/javascript" src="DigitalePorte-filer/widgets.js"></script>
+
+<iframe src="//www.facebook.com/plugins/like.php?href=http://www.avr-tutorials.com/digital/about-avr-8-bit-microcontrollers-digital-io-ports&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21" scrolling="no" style="border:none; overflow:hidden; width:450px; height:21px;" allowtransparency="true" frameborder="0"></iframe></div>
+</div>
+<div id="block-block-13" class="clear-block block block-block">
+
+
+  <div class="content"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-4218864777728079";
+/* AdsenseB */
+google_ad_slot = "1708103358";
+google_ad_width = 728;
+google_ad_height = 90;
+//--><!--
+google_ad_client = "ca-pub-4218864777728079";
+/* AdsenseB */
+google_ad_slot = "1708103358";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script><script type="text/javascript" src="DigitalePorte-filer/show_ads.js">
+</script></div>
+</div>
+          <span class="clear"></span>
+                    <div style="clear:both;"></div>
+      </div>
+    </div>
+
+      </div>
+
+  <div style="clear:both;"></div>
+
+  <div id="footer"><div id="block-block-4" class="clear-block block block-block">
+
+
+  <div class="content"><p>Copyright © 2010-2012 <a href="http://www.avr-tutorials.com/">AVR Tutorials</a> @ <a href="http://www.avr-tutorials.com/">AVR-Tutorials.com</a>. All Rights Reserved. &nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.avr-tutorials.com/disclaimer" rel="nofollow">Disclaimer</a></p>
+</div>
+</div>
+</div> 
+
+  <div id="footer-message"></div> 
+
+</div><iframe name="oauth2relay397520498" id="oauth2relay397520498" src="DigitalePorte-filer/postmessageRelay.html" style="width: 1px; height: 1px; position: absolute; top: -100px;" tabindex="-1" aria-hidden="true"></iframe>
+
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+var _gaq = _gaq || [];_gaq.push(["_setAccount", 
+"UA-21371642-1"]);_gaq.push(["_trackPageview"]);(function() {var ga = 
+document.createElement("script");ga.type = "text/javascript";ga.async = 
+true;ga.src = ("https:" == document.location.protocol ? "https://ssl" : 
+"http://www") + ".google-analytics.com/ga.js";var s = 
+document.getElementsByTagName("script")[0];s.parentNode.insertBefore(ga,
+ s);})();
+//--><!]]>
+</script>
+
+
+
+<iframe scrolling="no" allowtransparency="true" src="DigitalePorte-filer/widget_iframe.html" style="display: none;" frameborder="0"></iframe><iframe id="rufous-sandbox" scrolling="no" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: medium none;" title="Twitter analytics iframe" frameborder="0"></iframe></body></html>

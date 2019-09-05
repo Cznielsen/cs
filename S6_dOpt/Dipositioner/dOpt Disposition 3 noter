@@ -1,0 +1,203 @@
+dOpt Disposition 3 noter
+
+- Cramer's regel:
+	- Et lineært ligningssystem A*x = b har en unik løsning hvis og kun hvis determinanten af A ikke er lig 0: det(A) != 0.
+		- Løsning er da givet af: x_i = det(A_i) / det(A), 
+			hvor A_i er den i'de søjle i A erstattet med b.
+
+- Totally Unimodular Matrices (TUM):
+	- En m*n matrix A = (a_ij) er en totalt unimodulær hvis hver kvadratisk submatrix har determinanten i mængden {-1, 0, 1}. En submatrix er den resterende matrix hvis man fjerner enhver samling af rækker og/eller søjler.
+
+	- Integrality Theorem for TUM:
+		- Lad A være en m*n TUM og b være en vektor af heltal, så er alle basic solutions af F = {A*x <= b, x => 0} bestående af heltal.
+
+	- Vigtigt eksempel: Node-arc adjencency matrix
+		- Lad D = (N,A) være en orienteret (directed) graf og A dets node-arc adjacency matrix, rækker er indekseret af nodes og søjler af arcs.
+		- Indgang (k, (i, j)) er da:
+			1	hvis k = i
+			-1	hvis k = j
+			0	ellers
+
+	- Lemma 1: Hvis hver søjle i A har højst én indgang som er 1, og højst én indgang som er -1, så er A totalt unimodulær.
+	- Lemma 2: Lad A være totalt unimodulær, så er:
+		- A^T også Totalt unimodulær
+		- Hvis en ny matrix B er skabt ud fra A ved at fjerne-, bytte- eller gange rækker/søjler med -1, så er B også totalt unimodulær.
+	- Lemma 3: Lad A være totalt unimodulær, så er [A I] og [A A] også totalt unimodulære.
+
+
+- Netværk Flows:
+	- En orienteret graf D = (N,A). Flow x tildeler et reelt tal x_ij til arc (bue) ij \in A. Non-negativitets begrænsning: x_ij => 0
+
+	- Balancer:
+		* Udgående flow fra knude i: \sum_{i,j \in A} x_ij
+		* Indgående flow til knude i: \sum_{j,i \in A} x_ij
+		* Ballancen ved knude i mht. x: b_i(x) = udgående flow - indgående flow
+			- Hvis balance i knude i b_i(x) ikke er 0, så er det enten en source eller sink.
+
+	- Balance constraints (obligatorisk): For balancer b_i for i \in N:
+		* b_i(x) = b_i for alle i \in N. 
+		* Antagelse: \sum_{i \in N} b_i = 0
+	- Arc constraints (optional):
+		* l_ij <= x_ij <= u_ij for alle ij \in A
+		* Antagelse: 0 <= l_ij <= u_ij
+
+	- The minimum cost problem:
+		-Givet et netværk D=(N,A) med arc-cost c_ij samt balance/arc constraints:
+		 
+		 	- Find et feasible flow x, der minimerer: SUM af c_ij*x_ij for alle i,j \in A.
+
+		- Integrality theorem:
+			Hvis alle balance constraints, samt lower- og upper bounds er heltal, så findes der et minimum cost feasible flow der også er heltal.
+
+	- Eksempler på problemer der kan modeleres med flows:
+		* Tranportation problem (pris at tranportere varer fra i til j), 
+		* Tanker Scheduling problem (find minimum størrelse flåde at kunne håndtere alle deliveries),
+		* Hopping airplane (find den mest indbringende måde at acceptere passagerer på).
+
+	- Maximum (s,t)-flow problem:
+		- Er et special case af minimum cost flow problemet. 
+		Givet et netværk D=(N,A) med øvre grænser og specificeret source s \in N og t \in N:
+
+            - Find et feasible flow x der maksimerer værdien af flowet |x| = b_s(x).
+
+            	- Note: værdien af et flow er den mængde af flow der når ind i sink t (da denne ikke konserverer flow). |x| = b_s(x) = -b_t(x)*x*½
+
+		- Kriterier for at kunne være feasible:
+			* Non-negativity: x_ij >= 0 
+			(ingen negative flows)
+			* Flow conservation: b_i(x) = 0, for i != s,t 
+			(der skal lige så meget ud som der kom ind)
+			* Arc øvre grænser respekteret: x_ij <= u_ij.
+			(kan ikke sende mere gennem en arc end der er plads til)
+
+	- (s,t)-cuts:
+		- Givet et netværk D=(N,A) med øvre grænser og og specificeret source s og sink t: 
+
+			- Partitionér (S,T) af knuder N = S UNION T, med s  S og t \in T.
+
+		- Idéen er altså at man skal opdele sin netværk i to partitioner (behøver ikke være sammenhængende, hvor at source skal være i den ene mængde og sink i den anden.)
+
+	- Minimum (s,t)-cut problem:
+		- Givet et netværk D=(N,A) med øvre grænser og specificeret source s og sink t:
+			- Find (s,t)-cut (S,T) der minimerer u(S,T) = SUM af u_ij,  hvor i \in S og j \in T. Her er u(S,T) kapaciteten af cuttet.
+
+	- Max-flow Min-cut Theorem:
+		- Lad x være et feasible (s,t)-flow og lad (S,T) være et (s,t)-cut. 
+			- Så vil: |x| <= u(S,T)
+		- Teoremet:
+			Lad x være et maximal value feasible (s,t)-flow og lad (S,T) væøre et minimum kapacitet (s,t)-cut.
+				- Så vil: |x| = u(S,T).
+
+		- Eksempler på brug af dette:
+			- Preemptive scheduling på uniforme parallelle maskiner.
+			- Distribuerede computere på 2-processer systemer.
+			- Open pit mining.
+
+- Omdannelse af Network flow problemer til Lineære programmerings problemer:
+	- Minimum cost flow problemet:
+		- Det er et special case af et lineært programmeringsproblem.
+		- Antagelser:
+			* Netværket er forbundet (ligesom en uorienteret graf). Vi kan derfor betragte hver forbundet komponent seperat.
+			* Netværket har ingen arc constraints (ukapaciteret). Vi kan transformere ethvert netværk til et ævkvivalent ukapaciteret netværk. Alternativt kan vi udvide netværk simplex algoritmen med upper- og lower bounds.
+			* Netværket har ingen 2-cykler: Simplificerer fremstillingen af algoritmen. Den virker også med 2-cykler.
+
+		- LP formulering / model: Se dias 11 slide 5
+		- Complementary slackness:
+			- lad x og (y,z) være et par a feasible løsninger til primal og dual LP for netværk LP. Så vil disse (på samme tid) være optimalle hvis og kun hvis x_ij*z_ij = 0, for alle ij \in A.
+
+	- Primal and dual network simplex:
+		- Begge algoritmer virker med både primal og dual. (Primal) Network simplex er brugt når vi har en feasible primal løsning. Dual network simplex er brugt når vi har en feasible dual løsning.
+
+	- Spanning trees and bases:
+		- Et spanning tree T er et træ (dvs. en graf hvor der går flere arcs fra én node ud til mange andre noder) der er spanning (fylder alle nodes i hele grafen).
+
+		- Primal solution:
+			- Begynd ved bladene af træet og arbejd indad mod roden af træet. Tildel flow så constraints (f.eks. balance constraints) er tilfredsstillet.
+				* Arcs/kanterne i T er vores basic variabler i simplex
+			- Tildel flow 0 til de kanter der ikke er i T. Disse kanter er vores non-basic variabler.
+
+		- Dual solution:
+			- tildel 0 til dual variable y_r af roden af træet
+			- tildel 0 til alle dual sllacks for at tilfredsstille complementary slackness conditions.
+			- Arbéjd fra roden ud mod bladene på træet. Dette gøres ved at beregne vores dual variabler ved y_j = y_i+c_ij for ij \in T.
+			- Beregn de resterende dual slack variabler z_ij for ij \NotIn T ved z_ij = c_ij - y_j + y_i.
+
+			- Dual variablen y_i kan også beregnes ved at tage path'en fra (roden) r til i og summere costen for fremadrettede kanter og trække costen for bagudrettede kanter fra.
+			- Dual slack z_ij for ij \NotIn A kan også beregnes ved at at betragte cyklen for i og T i retningen ij. Addér prisen for de fremadrettede kanter og subtrakhér prisen for de bagudrettede kanter.
+
+		- Eftersom complementary slackness er tilfredsstillet af både primal og dual løsningen, så har vi en optimal løsning hvis x_ij >= 0 og z_ij >= 0 for alle ij \in A.
+
+	- Primal and Dual network simplex algorithms
+		- Primal:
+			1. Antag x er feasible. Udfør pivot operationer for at forbedre costen af x (og samtidig forbedre feasibility af (y,z)). 
+			2. Vælg en entering arc (variabel) ved at vælge en ij \in A, hvor z_ij < 0.
+			3. Vælg en leaving arc (variabel) ved at betragte cyklen lavet af ij og T i retning af ij. Vælg den bagudrettede kant med minimum flow value. Send flowet hen ad denne cykel for at "annullere" flowet på denne kant.
+			4.a (?) Opdatér dual solution ved at: 
+				- Subtract old dual slack of entering arc to arcs bridging in same direction as entering arc, and ADD old dual slack of entering arc to arcs bridging in the opposite direction of entering arc.
+			4.b Noter til "Opdatér dual solution".
+				- Hvis man fjerner udgående kanter splitter man T om til 2 træer.
+				- (?) If entering arc point from root-containing tree then increase all dual variables in non-root-containing tree by old dual slack of entering arc
+				- (?) Otherwise, decrease all dual variables in non-root containing tree by old dual slack of entering arc.
+
+		- Dual:
+			1. Antag (y, z) er feasible. Udfør pivot operationer indtil den er feasible (og derfor optimal).
+			2. Vælg udgående kant (variabel) ij \in T med x_ij < 0.
+			3. Vælg en indgående kant (variabel) således at den danner en cykel med T i retningen af ijj. Valg kanten med minimum dual slack. Send flowet henad denne cykel til at forøge flowet på kanten ij til 0.
+			4. Opdatér dual løsningen som i primal-algoritmen.
+
+		- Initialisering:
+			- Vi bruger dual network simplex algorithm (eller auxillary) til at finde den første feasible løsning til (primal) network simplex algoritmen.
+			- Vi sætter midlertidigt alle costs tilæ 0 (hvilket gør dual-løsningen feasible).
+			- Ved at køre dual network simplex algorithm får vi nu en feasible primal løsning/flow.
+			- Vi kan reverte tilbage til de originale costs og forsætte (primal) algoritmen.
+
+		- Terminering:
+			- Der kan forekomme degenerate pivot'er og cykler.
+			- Vi kan bruge samme anti-cykel regler som ved normal simplex
+			- Algoritmen kan "stalle" (have lange perioder hvor der ikke sker forbedring i objektive-funktionen).
+				- Disse kan løses vha. specielle pivot-operationer.
+
+		- Tidskompleksitet:
+			- I praksis er den generelle simplex-algoritme meget ydedygtig/effektiv.
+			- Hver iteration af netværk simplex algoritmen er MEGET hurtigere end den generelle simplex algoritme.
+			- I worst case er den lige så langsom (eksponentiel) som den generelle simplex.
+
+	- Klein's cycle cancelling algorithm:
+		- Ligesom network simplex sørger den for et feasible flow x samt at forbedre costen af x ved at lave "cykler" af flows i netværket (dette gøres ved at forbedre flow på fremadrettede kanter og formindske på bagudrettede kanter).
+		- I modsætning til network flows, så er den ikke begrænset til basic solutions i form af tree flows. Den tager også alle cykler i netværket i betragtning.
+
+		- Cycle flows:
+			- Lad C være en cykel i D. Lad F være mængden af fremadrettede kanter og B bagudrettede kanter.
+			- Prisen (Cost) for C: c(C) = F_c_ij - B_c_ij, for alle c_ij \in F og B.
+			- Cycle flow γ_c^δ er værdierne for kanterne i cyklen og er således:
+				* Kanter i F: δ
+				* Kanter i B: -δ
+				* Andre kanter: 0
+
+		- Observationer:
+			- Lad C være en cykel i D:
+				1. Cykel-flow γ_c^δ er en cirkulation (ingen source/sink).
+				2. Cost er: c(γ_c^δ) = δ*c(C).
+			- Lad x være et feasible flow i D, så:
+				1. Flowet x + γ_c^δ tilfredsstiller balance constraints.
+				2. Cost er c(x + γ_c^δ) = c(x) + δ * c(γ_c^δ).
+
+		- Augmenting cycles:
+			- Hvis x er et feasible flow og C er en cykel, så er C en augmenting cycle (augmenterende cykel) hvis:
+				1. Costen er negativ: c(C) < 0.
+				2. Der eksisterer et δ > 0, således at x + γ_c^δ er feasible.
+
+			- Det maksimum δ hvor x + γ_c^δ er feasible beskrives således:
+				- δ(C) = min{min_F(u_ij - x_ij), min_B(x_ij - l_ij)}
+
+		- Klein's algoritme pseudokode: dias 12 slide 7.
+
+	- Residual Network:
+		- Repræsenterer mulige ændringer af flowet på kanter uden at miste feasibility.
+		- Netværket vil have den samme mængde af nodes, specificere at feasible flows skal være cirkulationer og have upper bounds (residual capacities), samt costs, men ingen lower bounds.
+		- Definition:
+			- Lad x være et feasible flow. Det residuelle netværk D_x har kanter som følger. (?) Ses på dias 12 slide 9.
+
+		Se mere sidst dias 12
+
+

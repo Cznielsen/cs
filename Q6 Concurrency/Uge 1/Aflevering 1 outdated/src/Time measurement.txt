@@ -1,0 +1,4 @@
+No Threads:
+Primes: 664 579
+Time: 7060 ms
+

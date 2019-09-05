@@ -1,0 +1,44 @@
+h1. Assignment 7 Review
+
+h2. Focal Points:
+
+# *Completion and verification of SmartString:*
+For this focal point the group must have implemented the SmartString according to the UML-diagram as well as verify that it works as expected. This is done by completing the first exercise.
+# *Using the shared_ptr from the boost-library:*
+For this focal point the group must import at use the shared_ptr from the boost library correctly and show that it works as before.
+# *Answered questions in the assignment description:*
+For this focal point, the group must have (at least tried) to answer all the questions asked in the compulsory exercises in the assignment description.
+
+h3. Exercise Feedback
+
+* *Exercise 1:*
+Good code. In this case it is not really necessary to have the .cpp file of SmartString which contains basically the same code as the header. Good answers on the questions.
+* *Exercise 2:*
+Good implementation of the counted pointer. Fine test code and you test both the copy-constructor and the assignment-operator.
+* *Exercise 3 (OPTIONAL):*
+_Not done_
+* *Exercise 4:*
+Fine use of the library. Simple but good test. Good job!
+* *Exercise 5:*
+Good answers on the theoretical questions.
+
+
+h2. Requirements
+
+h3. Completion of Focal Points
+
+# *Completion and verification of SmartString:* (/)
+The group has completed this focal point by implementing the SmartString as described in the first exercise. They have also expanded it by completing the second exercise.
+# *Using the shared_ptr from the boost-library:* (/)
+The group has completed this focal point as seen in their completion of exercise 4.
+# *Answered questions in the assignment description:* (/)
+The group has answered all the required theoretical questions. As the ones in exercise 3 were optional it was only those from the first- and last exercise, which they answered well.
+
+h3. Other Requirements
+
+* *Necessary files in directory:* (/)
+* *Makefiles in directory:* (/)
+
+h2. Conclusion
+
+The group has completed the focal points and all the other requirements. For this reason I approve this assignment and will mark the review as 'OK'. Good job. (/)

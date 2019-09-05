@@ -1,0 +1,48 @@
+h1. Exercise 2 Review
+
+
+h2. *Focal Points:*
+
+# *Creating Threads:* The students must be able to create POSIX threads in c++ and use them.
+# *Using threads on shared data:* A measure on whether or not the students are able to utilise the POSIX-threads on shared data, including an realisation of the vector-class.
+# *Correctly answered theory:* The students must have understood the theory and thus have answered most of the questions correctly.
+
+h2. *Exercise specific feedback*
+
+
+*Exercise 1:*
+Good job on the code. Fine screencaps of both the code and that it runs. Theoretical questions answered correctly, but could have used some formatting.
+
+*Exercise 2:*
+Again, fine code and documentation that it runs as expected. OK question answers, but should properly underline why exactly the reader doesn't read the number "2". Good intuition that the problem can be solved by properly syncronizing the two threads.
+
+*Exercise 3:*
+Good code and use of the vector header. Could maybe have printed something every time a thread didn't fail (but this wasn't part of the assignment description, so doesn't really matter).
+
+Regarding the answer to the question you didn't answer why the program filed. They failed because we still haven't implemented any kind of concurrency-safety measures yet. The longer the sleep, the harder it is for the program to reach a race-condition, which is why exercise 4 asks us to user smaller sleep-times so that the program fails even on slow computers.
+
+*Exercise 4:*
+Good explanation on what happens and how it can be solved. Even modern computers cannot let one thread run their course before the other is woken up and an error is reported when sleep times are so short.
+
+*Exercise 5:*
+Good Explanation. Could maybe have used a screencap of the test.
+
+h2. *Feedback:*
+
+# *Creating Threads*
+Correct use of the threads, as well as implementing them in c++. This is shown in Exercise 1.  Focus point achieved. (/)
+# *Using threads on shared data:*
+The students show they are capable of this in Exercise 2 and 3, where they have used shared data and objects (vector) correctly. Focus point achieved. (/)
+# *Correctly answered theory:*
+Most of the theoretical questions have been correctly answered. Only minor problems. Formatting could've been better. Focus point achieved. (/)
+
+h2. *Must haves*
+
+
+ Relevant files in repository (/)
+
+ Make files in repository (/)
+
+h2. *Conclusion*
+
+All focal points have been achieved. /Must have/-requirements are met. Marking solution as 'OK' (/)

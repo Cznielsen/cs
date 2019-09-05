@@ -1,0 +1,1 @@
+cmd_/home/stud/hal/i3hal_f2018_weeabros/exercise6/del3/built-in.o :=  rm -f /home/stud/hal/i3hal_f2018_weeabros/exercise6/del3/built-in.o; arm-poky-linux-gnueabi-ar rcsD /home/stud/hal/i3hal_f2018_weeabros/exercise6/del3/built-in.o

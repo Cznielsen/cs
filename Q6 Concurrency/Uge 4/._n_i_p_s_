@@ -1,0 +1,1 @@
+ltl  {[]((p0@door && p1@lock) -> (!(p1@cs) W ((p1@cs) W (!(p1@cs) W ((p1@cs) W ((!(p1@cs)) W (p0@cs)))))))}

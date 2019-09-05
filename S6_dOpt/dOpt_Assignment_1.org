@@ -1,0 +1,234 @@
+#+OPTIONS: tex:t email:t
+#+Latex_CLASS: article
+#+LaTeX_CLASS_OPTIONS: [margin=0.3in]
+#+LATEX_HEADER:
+#+LATEX_HEADER_EXTRA:
+
+#+TITLE: dOpt 2018: Reassignment 1
+#+AUTHOR: Christian Zhuang-Qing Nielsen
+#+EMAIL: 201504624, christian@czn.dk
+
+* A description of your model. Describe the meaning of variables  and constraints.
+The point of this exercise is to find the optimal diet (i.e. cheapest) that still satifies a number of given constraints.
+ 
+Here each food is a variable in the linear program, which means that the final solution consists of a linear combination of these variables (which in this case is amount of 100g of the given foodstuff). The foods I have chosen and their data can be seen in the tables below.
+
+** Foods in unit/per 100 Gram.
+
+  |----------------------+---------+-----------+---------+-------+------------------+----------------|
+  | *Food*               | *Carbs* | *Protein* | *Sugar* | *Fat* | *Energy (in KJ)* | *Price in DKK* |
+  |----------------------+---------+-----------+---------+-------+------------------+----------------|
+  | Potatoes             |      17 |         2 |     0.8 |   0.1 |              318 |              1 |
+  |----------------------+---------+-----------+---------+-------+------------------+----------------|
+  | Ground beef (8-12%)  |       0 |      19.7 |       0 |   9.7 |              687 |            5.4 |
+  |----------------------+---------+-----------+---------+-------+------------------+----------------|
+  | Broccoli             |       7 |       2.8 |     1.7 |   0.4 |           138.07 |            2.4 |
+  |----------------------+---------+-----------+---------+-------+------------------+----------------|
+  | Oats (rough)         |    58.1 |      13.2 |       1 |   6.5 |             1532 |            1.2 |
+  |----------------------+---------+-----------+---------+-------+------------------+----------------|
+  | Skimmed Milk         |     4.7 |       3.5 |     4.7 |   0.1 |              138 |              1 |
+  |----------------------+---------+-----------+---------+-------+------------------+----------------|
+  | Butter               |     0.7 |       0.6 |       0 |  81.5 |             3094 |            9.9 |
+  |----------------------+---------+-----------+---------+-------+------------------+----------------|
+  | Chicken breast filet |     0.5 |        20 |     0.5 |   1.5 |              400 |              9 |
+  |----------------------+---------+-----------+---------+-------+------------------+----------------|
+  | Jasmin Rice          |      78 |         8 |     0.3 |     1 |             1507 |            1.5 |
+  |----------------------+---------+-----------+---------+-------+------------------+----------------|
+  | Canned Tomatoes      |     3.1 |       1.1 |     3.1 |   0.5 |               88 |          1.234 |
+  |----------------------+---------+-----------+---------+-------+------------------+----------------|
+  #+TBLFM: @3$7=54/10::@4$7=24/10::@5$7=12/10::@7$7=25/10::@8$7=15/10::@9$7=12.34/10
+
+Vitamines and minerals in milligrams
+
+|----------------------+------------+----------+--------|
+| *Food*               | *Vit. B12* | *Vit. C* | *Salt* |
+|----------------------+------------+----------+--------|
+| Potatoes             |          0 |     26.4 |    0.6 |
+|----------------------+------------+----------+--------|
+| Ground Beef (8-12%)  |     0.0019 |        0 |    900 |
+|----------------------+------------+----------+--------|
+| Broccoli             |          0 |      121 |      8 |
+|----------------------+------------+----------+--------|
+| Oats (rough)         |          0 |        0 |    6.7 |
+|----------------------+------------+----------+--------|
+| Skimmed Milk         |     0.0048 |      1.3 |   44.3 |
+|----------------------+------------+----------+--------|
+| Butter               |     0.0017 |        0 |    361 |
+|----------------------+------------+----------+--------|
+| Chicken breast filet |     0.0034 |        1 |     63 |
+|----------------------+------------+----------+--------|
+| Jasmin Rice          |          0 |        0 |    1.8 |
+|----------------------+------------+----------+--------|
+| Canned Tomatoes      |          0 |     11.3 |    143 |
+|----------------------+------------+----------+--------|
+#+TBLFM: @3$2=1.9/::@3$4=0.9*1000::@6$2=0.48/1000
+
+
+The constraints I have chosen in this model are the following:
+1. The energy amount must be above 10000 kilojoules
+2. The amount of energy from carbohydrates must be between 45% and 60%.
+3. Energy from protein must be between 10% and 20%
+4. Energy from Fat must be between 25% and 40%
+5. Energy from added sugar must not exceed 10% of total energy amount.
+6. The amount of salt must be between 2.8g and 4.9g a day
+7. Must contain more than 2 \mu{}g of Vitamine B12.
+8. Must contain more than 75 milligrams of vitamin C.
+
+** Definitions
+To write it all in a table I have defined some constants (to make writing the relation easier. The constants are the following:
+
+ |-----------------+-----+---------------------------------------------------------------------|
+ | *Definition*    |     | *Expression*                                                        |
+ |-----------------+-----+---------------------------------------------------------------------|
+ | *Price*         | ~=~ | 1x_1+5.4x_2+2.4x_3+1.2x_4+1x_5+9.9x_6+9x_7+1.5x_8+1.234x_9          |
+ |-----------------+-----+---------------------------------------------------------------------|
+ | *Energy*        | ~=~ | 318x_1+687x_2+138.07x_3+1532x_4+138x_5+3094x_6+400x_7+1507x_8+88x_9 |
+ |-----------------+-----+---------------------------------------------------------------------|
+ | *Carbohydrates* | ~=~ | 17x_1+0x_2+7x_3+58.1x_4+4.7x_5+0.7x_6+0.5x_7+78x_8+3.1x_9           |
+ |-----------------+-----+---------------------------------------------------------------------|
+ | *Protein*       | ~=~ | 2x_1+19.7x_2+2.8x_3+13.2x_4+3.5x_5+0.6x_6+20x_7+8x_8+1.1x_9         |
+ |-----------------+-----+---------------------------------------------------------------------|
+ | *Fat*           | ~=~ | 0.1x_1+9.7x_2+0.4x_3+6.5x_4+0.1x_5+81.5x_6+1.5x_7+1x_8+0.5x_9       |
+ |-----------------+-----+---------------------------------------------------------------------|
+ | *Sugar*         | ~=~ | 0.8x_1+0x_2+1.7x_3+1x_4+4.7x_5+0x_6+0.5x_7+0.3x_8+3.1x_9            |
+ |-----------------+-----+---------------------------------------------------------------------|
+ | *Vit.B12*       | ~=~ | 0x_1+0.0019x_2+0x_3+0x_4+0.0048x_5+0.0017x_6+0.0034x_7+0x_8+0x_9    |
+ |-----------------+-----+---------------------------------------------------------------------|
+ | *Vit.C*         | ~=~ | 26.4x_1+0x_2+121x_3+0x_4+1.3x_5+0x_6+1x_7+0x_8+11.3x_9              |
+ |-----------------+-----+---------------------------------------------------------------------|
+ | *Salt*          | ~=~ | 0.6x_1+900x_2+8x_3+6.7x_4+44.3x_5+361x_6+63x_7+1.8x_8+143x_9        |
+ |-----------------+-----+---------------------------------------------------------------------|
+
+To make keep it simpler from this point afterwards, I introduce some new variables for the macronutrients multiplied by the amount of energy per gram for that nutrient:
+
+|--------------+-----+------------------------|
+| *Definition* |     | *Expression*           |
+|--------------+-----+------------------------|
+| ECarb        | ~=~ | Carbohydrates \cdot 17 |
+|--------------+-----+------------------------|
+| EProtein     | ~=~ | Protein \cdot 17       |
+|--------------+-----+------------------------|
+| EFat         | ~=~ | Fat \cdot 17           |
+|--------------+-----+------------------------|
+| ESugar       | ~=~ | Sugar \cdot 17         |
+|--------------+-----+------------------------|
+
+** Constraints
+For every macronutrient, it is necessary to rewrite it so that each constraint are on standard form. Furthermore, for constraints that are dependant on other variables (like how the macronutrient bounds are dependant on the amount of total energy) we also have to do some rewrite magic. Lets take Carbohydrates lower bound as an example:
+
+
+$$ ECarb \geq 0.45*Energy \Leftrightarrow 0.45 \cdot Energy-ECarb \leq 0 $$
+
+
+This allows us to have 0 in the RHS of the constraint. I do this for every constraint, as seen in the table below:
+
+ | *Constraints*                           | *Rewritten (for standard form)*     |
+ | /                                       | <                                   |
+ |-----------------------------------------+-------------------------------------|
+ | Energy \geq 10000 Kj                    | -Energy \leq -10000 Kj              |
+ |-----------------------------------------+-------------------------------------|
+ | Carbohydrates \cdot 17 \geq 0.45*Energy | 0.45 \cdot Energy - ECarb \leq 0    |
+ |-----------------------------------------+-------------------------------------|
+ | Carbohydrates \cdot 17 \leq 0.6*Energy  | -0.6 \cdot Energy + ECarb \leq 0    |
+ |-----------------------------------------+-------------------------------------|
+ | Protein \cdot 17 \geq 0.1*Energy        | 0.1 \cdot Energy - EProtein \leq 0  |
+ |-----------------------------------------+-------------------------------------|
+ | Protein \cdot 17 \leq 0.2*Energy        | -0.2 \cdot Energy + EProtein \leq 0 |
+ |-----------------------------------------+-------------------------------------|
+ | Fat \cdot 38 \geq 0.25*Energy           | 0.25 \cdot Energy - EFat \leq 0     |
+ |-----------------------------------------+-------------------------------------|
+ | Fat \cdot 38 \leq 0.4*Energy            | -0.4 \cdot Energy + EFat \leq 0     |
+ |-----------------------------------------+-------------------------------------|
+ | Sugar \cdot 17 \leq 0.1*Energy          | -0.1 \cdot Energy + Esugar \leq 0   |
+ |-----------------------------------------+-------------------------------------|
+ | Salt \geq 2800 mg                       | -Salt \leq -2800 mg                 |
+ |-----------------------------------------+-------------------------------------|
+ | Salt \leq 4900 mg                       | No need to rewrite                  |
+ |-----------------------------------------+-------------------------------------|
+ | Vit.B12 \geq 0.002 mg                   | -Vit.B12 \leq -0.002 mg             |
+ |-----------------------------------------+-------------------------------------|
+ | Vit.C \geq 75 mg                        | -Vit.C \leq -75 mg                  |
+ |-----------------------------------------+-------------------------------------|
+
+* A short explanation of how you arrived at your model
+I started using only macronutrients and energy as restrictions for my model, but the optimal solution turned out to consist of nothing but oats and butter. This was in my opinion not sustainable, so I added some additional constraints which were the amount of sugar, salt and vitamine-B12 and -C. This improved my results to a point where I consider it eddible (though still a bit bland). The biggest issue I had was the nutritional value of oats as it contained most vitamins and minerals while still being nutritional rich as well as very cheap. I tried including Calcium and potassium to improve the odds of having milk in the final solution, but as it turned out the oats had a higher concentrationo of those minerals as well, thus proving milk obsolete, so I decided not to include them.
+
+* An optimal solution found using scipy.optimize.linprog
+I will attach the code as a zipfile/py file. It can also be seen in the sections below.
+
+** The code:
+#+NAME: simplex
+#+BEGIN_SRC python
+import scipy.optimize
+
+# Expression coefficients
+Energy = [318, 687, 138.07, 1532, 138, 3094, 400, 1507, 88]
+Carb = [17, 0, 7, 58.1, 4.7, 0.7, 0.5, 78, 3.1]
+Protein = [2, 19.7, 2.8, 13.2, 3.5, 0.6, 20, 8, 1.1]
+Fat = [0.1, 9.7, 0.4, 6.5, 0.1, 81.5, 1.5, 1, 0.5]
+Sugar = [0.8, 0, 1.7, 1, 4.7, 0, 0.5, 0.3, 3.1]
+Vit_B12 = [0, 0.0019, 0, 0, 0.0048, 0.0017, 0.0034, 0, 0]
+Vit_C = [26.4, 0, 121, 0, 1.3, 0, 1, 0, 11.3]
+Salt = [0.6, 900, 8, 6.7, 44.3, 361, 63, 1.8, 143]
+
+
+
+# Coefficients with energy
+Minus_Energy = [-1*x for x in Energy]
+Ecarb = [17*x for x in Carb]
+EProtein = [17*x for x in Protein]
+EFat = [38*x for x in Fat]
+ESugar = [17*x for x in Sugar]
+
+# Constraints
+Carb_Lower = [0.45*x-y for x, y in zip(Energy, Ecarb)]
+Carb_Upper = [-0.6*x+y for x, y in zip(Energy, Ecarb)]
+Protein_Lower = [0.1*x-y for x, y in zip(Energy, EProtein)]
+Protein_Upper = [-0.2*x+y for x, y in zip(Energy, EProtein)]
+Fat_Lower = [0.25*x-y for x, y in zip(Energy, EFat)]
+Fat_Upper = [-0.4*x+y for x, y in zip(Energy, EFat)]
+Sugar_Upper = [-0.1*x+y for x, y in zip(Energy, ESugar)]
+c = [1, 5.4, 2.4, 1.2, 1, 9.9, 9, 1.5, 1.234]
+A = [Minus_Energy,
+     Carb_Lower,
+     Carb_Upper,
+     Protein_Lower,
+     Protein_Upper,
+     Fat_Lower,
+     Fat_Upper,
+     Sugar_Upper,
+     [-1*x for x in Salt],
+     Salt,
+     [-1 * x for x in Vit_B12],
+     [-1 * x for x in Vit_C]]
+
+b = [-10000, 0, 0, 0, 0, 0, 0, 0, -2800, 4900, -0.002, -75]
+
+print(scipy.optimize.linprog(c, A, b, options={'tol': 1e-9}))
+#+END_SRC
+The list comprehensions is due to the fact that non-numpy arrays cannot be multiplied by a scalar (in this case -1). I had to set the tolerance to a higher number, as algorithm wouldn't be able to find a feasable solution otherwise.
+
+** The output:
+#+BEGIN_EXAMPLE
+     fun: 25.522116983036547
+ message: 'Optimization terminated successfully.'
+     nit: 16
+   slack: array([0.00000000e+00, 6.96330607e+02, 0.00000000e+00, 1.00000000e+03,
+       0.00000000e+00, 0.00000000e+00, 6.80905411e+02, 2.10000000e+03,
+       0.00000000e+00, 0.00000000e+00, 2.62708200e-03, 0.00000000e+00])
+  status: 0
+ success: True
+       x: array([0.        , 2.34439788, 0.2161664 , 5.00314242, 0.        ,
+       0.10160355, 0.        , 0.        , 4.32246602])
+
+#+END_EXAMPLE
+
+This is the optimal solution for the restraints. According to this solution, each day I will have to eat:
++ 234 grams of ground beef.
++ 22 grams of broccoli.
++ 500 grams of oats.
++ 10 grams of butter.
++ 432 grams of canned tomatoes.
+
+To optimize my diet. I deem this solution doable (basically italian food with some extra oats).
+

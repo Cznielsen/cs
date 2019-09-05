@@ -1,0 +1,38 @@
+Exercise 2 dML
+
+Opg 2.1:
+	a) Supervised
+	b) Unsupervised
+	c) Supervised
+	d) Unsupervised (?)
+
+Opg 2.2:
+	a) D = {([43 years, Male, 150k, House], 11475), ([18 years, Female, 60k, With Parents], 600), ...}
+	b) D = {18 years, 20 years, 43 years, 33 year, ...}
+	c) D = {([43 years, 11475], Male), ([19 years, 2243], Male), ([18 years, 600], Female), ...}
+	d) D = {[43 years, 150k, 11475], [19 years, 80k, 2243], [18 years, 60k, 600], ...}
+
+Opg 4.1:
+	a) Regression
+	b) Classification
+	c) Classification
+	d) Classification
+
+Opg 4.2
+	a) Y = {Real-value based on features}
+	b) Y = {white, rose, red}
+	c) Y = {-3,0,2,4,7,10,12}}
+	d) Y = {1104, 3375, 1001, ...}
+
+Opg 5.1
+	a) Step 1 = design
+	b) Step 2 = design
+	c) Step 3 = learning
+
+Opg 5.2
+	I don't think this will work because that would result in a corrolation between face ratios and crime (people with specific face traits would have a higher crime ratio).
+
+Opg 5.3
+	People with the most "crime-like" facial traits would get longer prison sentences. Calculate the prison-time to facial-trait ratio. We would need to be given more data-features for this.
+
+Opg 

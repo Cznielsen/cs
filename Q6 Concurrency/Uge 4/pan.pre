@@ -1,0 +1,55 @@
+# 1 "minpeterson.pml"
+# 1 "<built-in>" 1
+# 1 "<built-in>" 3
+# 329 "<built-in>" 3
+# 1 "<command line>" 1
+# 1 "<built-in>" 2
+# 1 "minpeterson.pml" 2
+# 18 "minpeterson.pml"
+ltl {[]((p0@door && p1@lock) -> (!(p1@cs) W ((p1@cs) W (!(p1@cs) W ((p1@cs) W ((!(p1@cs)) W (p0@cs)))))))}
+
+
+bool flag0 = false;
+bool flag1 = false;
+int victim;
+
+active proctype p0() {
+ play: do
+     :: true -> skip
+     :: true -> break
+     od;
+
+ lock: flag0 = true;
+   victim = 0;
+ door: skip;
+
+ wait: do
+     :: (flag1 && victim == 0) -> skip
+     :: else -> break
+     od;
+
+ cs: skip;
+   unlock:
+    flag0 = false;
+    goto play;
+}
+
+active proctype p1() {
+ play: do
+     :: true -> skip
+     :: true -> break
+     od;
+
+ lock: flag1 = true;
+     victim = 1;
+ door: skip;
+
+ wait: do
+     :: (flag0 && victim == 1) -> skip
+     :: else -> break
+     od;
+
+ cs: skip;
+   unlock: flag1 = false;
+     goto play;
+}

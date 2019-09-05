@@ -1,0 +1,138 @@
+/* Show it is fixed to the top */
+body {
+  min-height: 60rem;
+  padding-top: 4.5rem;
+}
+
+#datetimeshit {
+	width:100%;
+}
+
+.booking-picker {
+	position: relative;
+	width: 25%;
+	height: 775px;
+	/*background-color: lightgrey;*/
+	float: left;
+	margin-left: 3%;
+	margin-top: 90px;
+	text-align: center;
+	padding-left: 14px;
+	padding-right: 14px;
+}
+
+.booking-picker .booking-form {
+	text-align: left;
+	padding-top: 10px;
+}
+
+.container-fluid {
+	width: 70%;
+	float: right;
+	padding-right: 3%;
+}
+
+@media (max-width:275px) {
+    .display-4 {
+        font-size: 1.5rem;
+		width: 70%;
+    }
+    .day h5 {
+        background-color: #f8f9fa;
+        padding: 3px 5px 5px;
+        margin: -8px -8px 8px -8px;
+		width: 20px;
+    }
+    .date {
+        padding-left: 4px;
+    }
+}
+
+@media (min-width: 276px) {
+    .day {
+        height: 6.2857vw;
+		width: 7.2857vw;
+    }
+	.day:hover  {
+		background-color: lightgrey;
+		cursor: pointer;
+	}
+	.active-date {
+		background-color: lightblue;
+		cursor: default;
+	}
+}
+
+.active-date {
+		background-color: lightblue;
+		cursor: default;
+}
+
+.jumbotron {
+	height: 100px;
+}
+
+#helptext {
+	margin-top: -15px;
+	margin-right: -10px;
+	margin-left: -10px;
+}
+
+#bookingButton {
+	min-width: 150px;
+	float: right;
+	margin-left: 100px;
+}
+
+.invisible-div {
+	display: none !important;
+}
+
+.logoImage {
+	position: absolute;
+	bottom: 0px;
+	width: 94%;
+}
+
+#companyLogo {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	bottom: 0px;
+    width: 60%;
+}
+
+#adminCalendar {
+	margin-right: auto;
+	margin-left: auto;
+	width: 70%;
+}
+
+#bookingFields {
+	min-height: 800px;	
+}
+
+.appointment {
+	position: relative;
+	padding: 10px;
+}
+
+.cancelAppointment {
+	position: absolute;
+	margin-right: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
+	right: 0px;
+	top: 0px;
+	color: white;
+}
+
+.cancelAppointment:hover {
+	color: black;
+	cursor: pointer;
+}
+
+#footer img {
+	height: 30px;
+	width: 30px;
+}

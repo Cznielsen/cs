@@ -1,0 +1,48 @@
+% Created 2018-04-16 ma 17:15
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\usepackage{color}
+\usepackage{listings}
+\author{Christian Zhuang-Qing Nielsen\thanks{201504624, christian@czn.dk}}
+\date{\today}
+\title{dOpt Compulsory Assignment 3}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 25.1.1 (Org mode 8.2.10)}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{Proof}
+\label{sec-1}
+Since $\pi_1$ and $\pi_2$ are good representations, they must necessary run in polynomial time and since they are equivalent it is possible to reduce one of them from the other and vice versa. $f$ is a simple function that run in constant time (basically converts '1' to 'yes' and '0' to 'no'). Since:
+\begin{itemize}
+\item $L_1$ is based upon the functionality of $\pi_1$,
+\item $f$ does the same in both languages,
+\item $\pi_1 \leq \pi_2$ (per definition of being polynomially equivalent)
+\end{itemize}
+$L_1$ must also be reducible from $L_2$ and vice versa (i.e. $L_1 \leq L_2$. We know that $L_2 \in P$ as it was restricted by $\pi_2$ which is bounded by polynomial time and thus in $P$ as well. We can then finally use the property of  downward closure of $P$ on our languages:
+\begin{equation*}
+$L_1 \leq L_2 \wedge L_2 \in P \implies L_1 \in P$
+\end{equation}
+to make the implication that if $L_2$ is in $P$ then $L_1$ must also necessarily be in $P$ and vice versa. Similarly if $L_1 or L_2$ is not in $P$ (and $f$ is trivial), then the inner $\pi$-function is \emph{not} a good representation and both languages must not be in $P$ following the closure. This gives us that $L_1 \in P \Leftrightarrow L_2 \in P$, if $\pi_1$ and $\pi_2$ are good representations. \square
+% Emacs 25.1.1 (Org mode 8.2.10)
+\end{document}
